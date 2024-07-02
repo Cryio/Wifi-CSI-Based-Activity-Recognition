@@ -1,0 +1,573 @@
+PowerShell 7.4.0
+
+   A new PowerShell stable release is available: v7.4.1
+   Upgrade now, or check out the release page at:
+     https://aka.ms/PowerShell-Release?tag=v7.4.1
+
+PS C:\Users\Administrator> ssh raspberry@192.168.136.244
+Linux raspberry 5.4.83-v7+ #1379 SMP Mon Dec 14 13:08:57 GMT 2020 armv7l
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Mon Jan 22 23:34:01 2024
+raspberry@raspberry:~ $ cd nexmon/
+raspberry@raspberry:~/nexmon $ sudo su
+root@raspberry:/home/raspberry/nexmon# cd /usr/lib/arm-linux-gnueabihf/libisl.so.10
+bash: cd: /usr/lib/arm-linux-gnueabihf/libisl.so.10: Not a directory
+root@raspberry:/home/raspberry/nexmon# cd buildtools/isl-0.10
+root@raspberry:/home/raspberry/nexmon/buildtools/isl-0.10# ./configure
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a thread-safe mkdir -p... /usr/bin/mkdir -p
+checking for gawk... gawk
+checking whether make sets $(MAKE)... yes
+checking for gcc... gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables...
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to accept ISO C89... none needed
+checking for style of include used by make... GNU
+checking dependency style of gcc... gcc3
+checking for g++... g++
+checking whether we are using the GNU C++ compiler... yes
+checking whether g++ accepts -g... yes
+checking dependency style of g++... gcc3
+checking for C compiler vendor... gnu
+checking build system type... armv7l-unknown-linux-gnueabihf
+checking host system type... armv7l-unknown-linux-gnueabihf
+checking whether C compiler accepts -malign-double... no
+checking whether C compiler accepts -fstrict-aliasing... yes
+checking whether C compiler accepts -ffast-math... yes
+checking for gcc architecture flag...
+checking for gcc architecture flag... unknown
+checking whether C compiler accepts -O3 -fomit-frame-pointer -fstrict-aliasing -ffast-math... yes
+checking whether the compiler supports function __attribute__((__warn_unused_result__))... yes
+checking for __attribute__... yes
+checking how to print strings... printf
+checking for a sed that does not truncate output... /usr/bin/sed
+checking for grep that handles long lines and -e... /usr/bin/grep
+checking for egrep... /usr/bin/grep -E
+checking for fgrep... /usr/bin/grep -F
+checking for ld used by gcc... /usr/bin/ld
+checking if the linker (/usr/bin/ld) is GNU ld... yes
+checking for BSD- or MS-compatible name lister (nm)... /usr/bin/nm -B
+checking the name lister (/usr/bin/nm -B) interface... BSD nm
+checking whether ln -s works... yes
+checking the maximum length of command line arguments... 1572864
+checking whether the shell understands some XSI constructs... yes
+checking whether the shell understands "+="... yes
+checking how to convert armv7l-unknown-linux-gnueabihf file names to armv7l-unknown-linux-gnueabihf format... func_convert_file_noop
+checking how to convert armv7l-unknown-linux-gnueabihf file names to toolchain format... func_convert_file_noop
+checking for /usr/bin/ld option to reload object files... -r
+checking for objdump... objdump
+checking how to recognize dependent libraries... pass_all
+checking for dlltool... no
+checking how to associate runtime and link libraries... printf %s\n
+checking for ar... ar
+checking for archiver @FILE support... @
+checking for strip... strip
+checking for ranlib... ranlib
+checking command to parse /usr/bin/nm -B output from gcc object... ok
+checking for sysroot... no
+checking for mt... mt
+checking if mt is a manifest tool... no
+checking how to run the C preprocessor... gcc -E
+checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking for dlfcn.h... yes
+checking for objdir... .libs
+checking if gcc supports -fno-rtti -fno-exceptions... no
+checking for gcc option to produce PIC... -fPIC -DPIC
+checking if gcc PIC flag -fPIC -DPIC works... yes
+checking if gcc static flag -static works... yes
+checking if gcc supports -c -o file.o... yes
+checking if gcc supports -c -o file.o... (cached) yes
+checking whether the gcc linker (/usr/bin/ld) supports shared libraries... yes
+checking whether -lc should be explicitly linked in... no
+checking dynamic linker characteristics... GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking whether stripping libraries is possible... yes
+checking if libtool supports shared libraries... yes
+checking whether to build shared libraries... yes
+checking whether to build static libraries... yes
+checking how to run the C++ preprocessor... g++ -E
+checking for ld used by g++... /usr/bin/ld
+checking if the linker (/usr/bin/ld) is GNU ld... yes
+checking whether the g++ linker (/usr/bin/ld) supports shared libraries... yes
+checking for g++ option to produce PIC... -fPIC -DPIC
+checking if g++ PIC flag -fPIC -DPIC works... yes
+checking if g++ static flag -static works... yes
+checking if g++ supports -c -o file.o... yes
+checking if g++ supports -c -o file.o... (cached) yes
+checking whether the g++ linker (/usr/bin/ld) supports shared libraries... yes
+checking dynamic linker characteristics... (cached) GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking for perl... perl
+checking for pdflatex... no
+checking for pod2html... pod2html
+checking for stdint types... stdint.h (shortcircuit)
+make use of stdint.h in include/isl/stdint.h (assuming C99 compatible system)
+checking which gmp to use... system
+checking whether mp_get_memory_functions is declared... yes
+checking which piplib to use... no
+checking which clang to use... no
+checking for C compiler vendor... (cached) gnu
+checking our pkgconfig libname... isl
+checking our pkgconfig version... 0.10
+checking our pkgconfig_libdir... ${libdir}/pkgconfig
+expanded our pkgconfig_libdir... /usr/local/lib/pkgconfig
+checking our pkgconfig_libfile... isl.pc
+checking our package / suffix... isl /
+checking our pkgconfig description... isl Library
+checking our pkgconfig requires...
+checking our pkgconfig ext libs... -lisl -lgmp
+checking our pkgconfig cppflags...
+checking our pkgconfig ldflags...
+noninstalled pkgconfig -L /home/raspberry/nexmon/buildtools/isl-0.10/.libs
+noninstalled pkgconfig -I /home/raspberry/nexmon/buildtools/isl-0.10/./include
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating doc/Makefile
+config.status: creating bound_test.sh
+config.status: creating pip_test.sh
+config.status: creating isl_config.h
+config.status: isl_config.h is unchanged
+config.status: creating include/isl/config.h
+config.status: include/isl/config.h is unchanged
+config.status: executing depfiles commands
+config.status: executing libtool commands
+config.status: executing include/isl/stdint.h commands
+config.status: creating include/isl/stdint.h : _ISL_INCLUDE_ISL_STDINT_H
+config.status: include/isl/stdint.h is unchanged
+config.status: executing isl.pc commands
+config.status: creating isl.pc.in
+config.status: creating isl.pc
+config.status: creating isl-uninstalled.pc
+config.status: creating isl-uninstalled.sh
+root@raspberry:/home/raspberry/nexmon/buildtools/isl-0.10# make
+make  all-recursive
+make[1]: Entering directory '/home/raspberry/nexmon/buildtools/isl-0.10'
+Making all in .
+make[2]: Entering directory '/home/raspberry/nexmon/buildtools/isl-0.10'
+  CC     libisl_la-isl_version.lo
+  CCLD   libisl.la
+ar: `u' modifier ignored since `D' is the default (see `U')
+  CCLD   isl_test
+  CCLD   isl_polyhedron_sample
+  CCLD   isl_pip
+  CCLD   isl_polyhedron_minimize
+  CCLD   isl_polytope_scan
+  CCLD   isl_polyhedron_detect_equalities
+  CCLD   isl_cat
+  CCLD   isl_closure
+  CCLD   isl_bound
+make[2]: Leaving directory '/home/raspberry/nexmon/buildtools/isl-0.10'
+Making all in doc
+make[2]: Entering directory '/home/raspberry/nexmon/buildtools/isl-0.10/doc'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/home/raspberry/nexmon/buildtools/isl-0.10/doc'
+make[1]: Leaving directory '/home/raspberry/nexmon/buildtools/isl-0.10'
+root@raspberry:/home/raspberry/nexmon/buildtools/isl-0.10# make install
+Making install in .
+make[1]: Entering directory '/home/raspberry/nexmon/buildtools/isl-0.10'
+make[2]: Entering directory '/home/raspberry/nexmon/buildtools/isl-0.10'
+test -z "/usr/local/lib" || /usr/bin/mkdir -p "/usr/local/lib"
+ /bin/bash ./libtool   --mode=install /usr/bin/install -c   libisl.la '/usr/local/lib'
+libtool: install: /usr/bin/install -c .libs/libisl.so.10.0.0 /usr/local/lib/libisl.so.10.0.0
+libtool: install: (cd /usr/local/lib && { ln -s -f libisl.so.10.0.0 libisl.so.10 || { rm -f libisl.so.10 && ln -s libisl.so.10.0.0 libisl.so.10; }; })
+libtool: install: (cd /usr/local/lib && { ln -s -f libisl.so.10.0.0 libisl.so || { rm -f libisl.so && ln -s libisl.so.10.0.0 libisl.so; }; })
+libtool: install: /usr/bin/install -c .libs/libisl.lai /usr/local/lib/libisl.la
+libtool: install: /usr/bin/install -c .libs/libisl.a /usr/local/lib/libisl.a
+libtool: install: chmod 644 /usr/local/lib/libisl.a
+libtool: install: ranlib /usr/local/lib/libisl.a
+libtool: finish: PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/sbin" ldconfig -n /usr/local/lib
+----------------------------------------------------------------------
+Libraries have been installed in:
+   /usr/local/lib
+
+If you ever happen to want to link against installed libraries
+in a given directory, LIBDIR, you must either use libtool, and
+specify the full pathname of the library, or use the `-LLIBDIR'
+flag during linking and do at least one of the following:
+   - add LIBDIR to the `LD_LIBRARY_PATH' environment variable
+     during execution
+   - add LIBDIR to the `LD_RUN_PATH' environment variable
+     during linking
+   - use the `-Wl,-rpath -Wl,LIBDIR' linker flag
+   - have your system administrator add LIBDIR to `/etc/ld.so.conf'
+
+See any operating system documentation about shared libraries for
+more information, such as the ld(1) and ld.so(8) manual pages.
+----------------------------------------------------------------------
+/usr/bin/install -c -m 644 ./isl.py /usr/local/lib/libisl.so.10.0.0-gdb.py
+test -z "/usr/local/include/isl" || /usr/bin/mkdir -p "/usr/local/include/isl"
+ /usr/bin/install -c -m 644 include/isl/config.h include/isl/stdint.h '/usr/local/include/isl'
+test -z "/usr/local/lib/pkgconfig" || /usr/bin/mkdir -p "/usr/local/lib/pkgconfig"
+ /usr/bin/install -c -m 644 isl.pc '/usr/local/lib/pkgconfig'
+test -z "/usr/local/include/isl" || /usr/bin/mkdir -p "/usr/local/include/isl"
+ /usr/bin/install -c -m 644 include/isl/aff.h include/isl/aff_type.h include/isl/arg.h include/isl/band.h include/isl/blk.h include/isl/constraint.h include/isl/ctx.h include/isl/dim.h include/isl/flow.h include/isl/id.h include/isl/ilp.h include/isl/int.h include/isl/hash.h include/isl/list.h include/isl/local_space.h include/isl/lp.h include/isl/mat.h include/isl/map.h include/isl/map_type.h include/isl/multi.h include/isl/obj.h include/isl/options.h include/isl/point.h include/isl/polynomial.h include/isl/polynomial_type.h include/isl/printer.h include/isl/schedule.h include/isl/seq.h include/isl/set.h include/isl/set_type.h include/isl/space.h include/isl/stream.h include/isl/union_map.h include/isl/union_map_type.h include/isl/union_set.h include/isl/union_set_type.h include/isl/vec.h include/isl/version.h include/isl/vertices.h '/usr/local/include/isl'
+make[2]: Leaving directory '/home/raspberry/nexmon/buildtools/isl-0.10'
+make[1]: Leaving directory '/home/raspberry/nexmon/buildtools/isl-0.10'
+Making install in doc
+make[1]: Entering directory '/home/raspberry/nexmon/buildtools/isl-0.10/doc'
+make[2]: Entering directory '/home/raspberry/nexmon/buildtools/isl-0.10/doc'
+make[2]: Nothing to be done for 'install-exec-am'.
+make[2]: Nothing to be done for 'install-data-am'.
+make[2]: Leaving directory '/home/raspberry/nexmon/buildtools/isl-0.10/doc'
+make[1]: Leaving directory '/home/raspberry/nexmon/buildtools/isl-0.10/doc'
+root@raspberry:/home/raspberry/nexmon/buildtools/isl-0.10# ln -s /usr/local/lib/libisl.so /usr/lib/arm-linux-gnueabihf/libisl.so.10
+ln: failed to create symbolic link '/usr/lib/arm-linux-gnueabihf/libisl.so.10': File exists
+root@raspberry:/home/raspberry/nexmon/buildtools/isl-0.10# ln -s /usr/local/lib/libmpfr.so /usr/lib/arm-linux-gnueabihf/libmpfr.so.4
+ln: failed to create symbolic link '/usr/lib/arm-linux-gnueabihf/libmpfr.so.4': File exists
+root@raspberry:/home/raspberry/nexmon/buildtools/isl-0.10# cd ..
+root@raspberry:/home/raspberry/nexmon/buildtools# cd ..
+root@raspberry:/home/raspberry/nexmon# source setup_env.sh
+root@raspberry:/home/raspberry/nexmon# make
+  BUILDING BUILDTOOLS
+make[1]: Entering directory '/home/raspberry/nexmon/buildtools'
+  BUILDING flash_patch_extractor
+make[2]: Entering directory '/home/raspberry/nexmon/buildtools/flash_patch_extractor'
+make[2]: 'fpext' is up to date.
+make[2]: Leaving directory '/home/raspberry/nexmon/buildtools/flash_patch_extractor'
+  BUILDING ucode_extractor
+make[2]: Entering directory '/home/raspberry/nexmon/buildtools/ucode_extractor'
+make[2]: 'ucodeext' is up to date.
+make[2]: Leaving directory '/home/raspberry/nexmon/buildtools/ucode_extractor'
+  BUILDING b43/assembler/b43-asm.bin
+make[2]: Entering directory '/home/raspberry/nexmon/buildtools/b43/assembler'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/home/raspberry/nexmon/buildtools/b43/assembler'
+  BUILDING b43/disassembler/b43-dasm
+make[2]: Entering directory '/home/raspberry/nexmon/buildtools/b43/disassembler'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/home/raspberry/nexmon/buildtools/b43/disassembler'
+  BUILDING b43-v2/assembler/b43-asm.bin
+make[2]: Entering directory '/home/raspberry/nexmon/buildtools/b43-v2/assembler'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/home/raspberry/nexmon/buildtools/b43-v2/assembler'
+  BUILDING b43-v2/disassembler/b43-dasm
+make[2]: Entering directory '/home/raspberry/nexmon/buildtools/b43-v2/disassembler'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/home/raspberry/nexmon/buildtools/b43-v2/disassembler'
+  BUILDING b43-v3/assembler/b43-asm.bin
+make[2]: Entering directory '/home/raspberry/nexmon/buildtools/b43-v3/assembler'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/home/raspberry/nexmon/buildtools/b43-v3/assembler'
+  BUILDING b43-v3/disassembler/b43-dasm
+make[2]: Entering directory '/home/raspberry/nexmon/buildtools/b43-v3/disassembler'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/home/raspberry/nexmon/buildtools/b43-v3/disassembler'
+make[1]: Leaving directory '/home/raspberry/nexmon/buildtools'
+  EXTRACTING FLASHPATCHES AND UCODE
+make[1]: Entering directory '/home/raspberry/nexmon/firmwares'
+  EXECUTING MAKE FOR CHIP VERSION bcm4330/
+make[2]: Entering directory '/home/raspberry/nexmon/firmwares/bcm4330'
+  EXECUTING MAKE FOR FIRMWARE VERSION 5_90_100_41_sta/
+make[3]: Entering directory '/home/raspberry/nexmon/firmwares/bcm4330/5_90_100_41_sta'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm4330/5_90_100_41_sta'
+make[2]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm4330'
+  EXECUTING MAKE FOR CHIP VERSION bcm4335b0/
+make[2]: Entering directory '/home/raspberry/nexmon/firmwares/bcm4335b0'
+  EXECUTING MAKE FOR FIRMWARE VERSION 6.30.171.1_sta/
+make[3]: Entering directory '/home/raspberry/nexmon/firmwares/bcm4335b0/6.30.171.1_sta'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm4335b0/6.30.171.1_sta'
+make[2]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm4335b0'
+  EXECUTING MAKE FOR CHIP VERSION bcm4339/
+make[2]: Entering directory '/home/raspberry/nexmon/firmwares/bcm4339'
+  EXECUTING MAKE FOR FIRMWARE VERSION 6_37_34_43/
+make[3]: Entering directory '/home/raspberry/nexmon/firmwares/bcm4339/6_37_34_43'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm4339/6_37_34_43'
+make[2]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm4339'
+  EXECUTING MAKE FOR CHIP VERSION bcm43430a1/
+make[2]: Entering directory '/home/raspberry/nexmon/firmwares/bcm43430a1'
+  EXECUTING MAKE FOR FIRMWARE VERSION 7_45_41_26/
+make[3]: Entering directory '/home/raspberry/nexmon/firmwares/bcm43430a1/7_45_41_26'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm43430a1/7_45_41_26'
+  EXECUTING MAKE FOR FIRMWARE VERSION 7_45_41_46/
+make[3]: Entering directory '/home/raspberry/nexmon/firmwares/bcm43430a1/7_45_41_46'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm43430a1/7_45_41_46'
+make[2]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm43430a1'
+  EXECUTING MAKE FOR CHIP VERSION bcm43436b0/
+make[2]: Entering directory '/home/raspberry/nexmon/firmwares/bcm43436b0'
+  EXECUTING MAKE FOR FIRMWARE VERSION 9_88_4_65/
+make[3]: Entering directory '/home/raspberry/nexmon/firmwares/bcm43436b0/9_88_4_65'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm43436b0/9_88_4_65'
+make[2]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm43436b0'
+  EXECUTING MAKE FOR CHIP VERSION bcm43438/
+make[2]: Entering directory '/home/raspberry/nexmon/firmwares/bcm43438'
+  EXECUTING MAKE FOR FIRMWARE VERSION 7_45_41_26/
+make[3]: Entering directory '/home/raspberry/nexmon/firmwares/bcm43438/7_45_41_26'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm43438/7_45_41_26'
+make[2]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm43438'
+  EXECUTING MAKE FOR CHIP VERSION bcm43439a0/
+make[2]: Entering directory '/home/raspberry/nexmon/firmwares/bcm43439a0'
+  EXECUTING MAKE FOR FIRMWARE VERSION 7_95_49_2271bb6/
+make[3]: Entering directory '/home/raspberry/nexmon/firmwares/bcm43439a0/7_95_49_2271bb6'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm43439a0/7_95_49_2271bb6'
+make[2]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm43439a0'
+  EXECUTING MAKE FOR CHIP VERSION bcm43451b1/
+make[2]: Entering directory '/home/raspberry/nexmon/firmwares/bcm43451b1'
+  EXECUTING MAKE FOR FIRMWARE VERSION 7_63_43_0/
+make[3]: Entering directory '/home/raspberry/nexmon/firmwares/bcm43451b1/7_63_43_0'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm43451b1/7_63_43_0'
+make[2]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm43451b1'
+  EXECUTING MAKE FOR CHIP VERSION bcm43455c0/
+make[2]: Entering directory '/home/raspberry/nexmon/firmwares/bcm43455c0'
+  EXECUTING MAKE FOR FIRMWARE VERSION 7_45_154/
+make[3]: Entering directory '/home/raspberry/nexmon/firmwares/bcm43455c0/7_45_154'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm43455c0/7_45_154'
+  EXECUTING MAKE FOR FIRMWARE VERSION 7_45_189/
+make[3]: Entering directory '/home/raspberry/nexmon/firmwares/bcm43455c0/7_45_189'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm43455c0/7_45_189'
+  EXECUTING MAKE FOR FIRMWARE VERSION 7_45_206/
+make[3]: Entering directory '/home/raspberry/nexmon/firmwares/bcm43455c0/7_45_206'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm43455c0/7_45_206'
+  EXECUTING MAKE FOR FIRMWARE VERSION 7_45_241/
+make[3]: Entering directory '/home/raspberry/nexmon/firmwares/bcm43455c0/7_45_241'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm43455c0/7_45_241'
+make[2]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm43455c0'
+  EXECUTING MAKE FOR CHIP VERSION bcm43455/
+make[2]: Entering directory '/home/raspberry/nexmon/firmwares/bcm43455'
+  EXECUTING MAKE FOR FIRMWARE VERSION 7_120_5_1_sta_C0/
+make[3]: Entering directory '/home/raspberry/nexmon/firmwares/bcm43455/7_120_5_1_sta_C0'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm43455/7_120_5_1_sta_C0'
+  EXECUTING MAKE FOR FIRMWARE VERSION 7_120_7_1_sta_C0/
+make[3]: Entering directory '/home/raspberry/nexmon/firmwares/bcm43455/7_120_7_1_sta_C0'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm43455/7_120_7_1_sta_C0'
+  EXECUTING MAKE FOR FIRMWARE VERSION 7_45_59_16/
+make[3]: Entering directory '/home/raspberry/nexmon/firmwares/bcm43455/7_45_59_16'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm43455/7_45_59_16'
+  EXECUTING MAKE FOR FIRMWARE VERSION 7_45_77_0_hw_23_8_2017/
+make[3]: Entering directory '/home/raspberry/nexmon/firmwares/bcm43455/7_45_77_0_hw_23_8_2017'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm43455/7_45_77_0_hw_23_8_2017'
+  EXECUTING MAKE FOR FIRMWARE VERSION 7_45_77_0_hw/
+make[3]: Entering directory '/home/raspberry/nexmon/firmwares/bcm43455/7_45_77_0_hw'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm43455/7_45_77_0_hw'
+  EXECUTING MAKE FOR FIRMWARE VERSION 7_46_77_11_hw/
+make[3]: Entering directory '/home/raspberry/nexmon/firmwares/bcm43455/7_46_77_11_hw'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm43455/7_46_77_11_hw'
+make[2]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm43455'
+  EXECUTING MAKE FOR CHIP VERSION bcm4356/
+make[2]: Entering directory '/home/raspberry/nexmon/firmwares/bcm4356'
+  EXECUTING MAKE FOR FIRMWARE VERSION 7_35_101_5_sta/
+make[3]: Entering directory '/home/raspberry/nexmon/firmwares/bcm4356/7_35_101_5_sta'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm4356/7_35_101_5_sta'
+make[2]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm4356'
+  EXECUTING MAKE FOR CHIP VERSION bcm4358/
+make[2]: Entering directory '/home/raspberry/nexmon/firmwares/bcm4358'
+  EXECUTING MAKE FOR FIRMWARE VERSION 7_112_200_17_sta/
+make[3]: Entering directory '/home/raspberry/nexmon/firmwares/bcm4358/7_112_200_17_sta'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm4358/7_112_200_17_sta'
+  EXECUTING MAKE FOR FIRMWARE VERSION 7_112_201_3_sta/
+make[3]: Entering directory '/home/raspberry/nexmon/firmwares/bcm4358/7_112_201_3_sta'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm4358/7_112_201_3_sta'
+  EXECUTING MAKE FOR FIRMWARE VERSION 7_112_300_14_sta/
+make[3]: Entering directory '/home/raspberry/nexmon/firmwares/bcm4358/7_112_300_14_sta'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm4358/7_112_300_14_sta'
+make[2]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm4358'
+  EXECUTING MAKE FOR CHIP VERSION bcm43596a0/
+make[2]: Entering directory '/home/raspberry/nexmon/firmwares/bcm43596a0'
+  EXECUTING MAKE FOR FIRMWARE VERSION 9.75.155.45_sta_c0/
+make[3]: Entering directory '/home/raspberry/nexmon/firmwares/bcm43596a0/9.75.155.45_sta_c0'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm43596a0/9.75.155.45_sta_c0'
+  EXECUTING MAKE FOR FIRMWARE VERSION 9.96.4_sta_c0/
+make[3]: Entering directory '/home/raspberry/nexmon/firmwares/bcm43596a0/9.96.4_sta_c0'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm43596a0/9.96.4_sta_c0'
+make[2]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm43596a0'
+  EXECUTING MAKE FOR CHIP VERSION bcm4361b0/
+make[2]: Entering directory '/home/raspberry/nexmon/firmwares/bcm4361b0'
+  EXECUTING MAKE FOR FIRMWARE VERSION 13_38_55_1_sta/
+make[3]: Entering directory '/home/raspberry/nexmon/firmwares/bcm4361b0/13_38_55_1_sta'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm4361b0/13_38_55_1_sta'
+make[2]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm4361b0'
+  EXECUTING MAKE FOR CHIP VERSION bcm4366c0/
+make[2]: Entering directory '/home/raspberry/nexmon/firmwares/bcm4366c0'
+  EXECUTING MAKE FOR FIRMWARE VERSION 10_10_122_20/
+make[3]: Entering directory '/home/raspberry/nexmon/firmwares/bcm4366c0/10_10_122_20'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm4366c0/10_10_122_20'
+make[2]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm4366c0'
+  EXECUTING MAKE FOR CHIP VERSION bcm4375b1/
+make[2]: Entering directory '/home/raspberry/nexmon/firmwares/bcm4375b1'
+  EXECUTING MAKE FOR FIRMWARE VERSION 18_38_18_sta/
+make[3]: Entering directory '/home/raspberry/nexmon/firmwares/bcm4375b1/18_38_18_sta'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm4375b1/18_38_18_sta'
+  EXECUTING MAKE FOR FIRMWARE VERSION 18_41_113_sta/
+make[3]: Entering directory '/home/raspberry/nexmon/firmwares/bcm4375b1/18_41_113_sta'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm4375b1/18_41_113_sta'
+  EXECUTING MAKE FOR FIRMWARE VERSION 18_41_8_9_sta/
+make[3]: Entering directory '/home/raspberry/nexmon/firmwares/bcm4375b1/18_41_8_9_sta'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm4375b1/18_41_8_9_sta'
+make[2]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm4375b1'
+  EXECUTING MAKE FOR CHIP VERSION bcm4389c1/
+make[2]: Entering directory '/home/raspberry/nexmon/firmwares/bcm4389c1'
+  EXECUTING MAKE FOR FIRMWARE VERSION 20_101_36_2/
+make[3]: Entering directory '/home/raspberry/nexmon/firmwares/bcm4389c1/20_101_36_2'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm4389c1/20_101_36_2'
+  EXECUTING MAKE FOR FIRMWARE VERSION 20_101_57_r1035009/
+make[3]: Entering directory '/home/raspberry/nexmon/firmwares/bcm4389c1/20_101_57_r1035009'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm4389c1/20_101_57_r1035009'
+  EXECUTING MAKE FOR FIRMWARE VERSION 20_82_42_r985250_sta/
+make[3]: Entering directory '/home/raspberry/nexmon/firmwares/bcm4389c1/20_82_42_r985250_sta'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm4389c1/20_82_42_r985250_sta'
+make[2]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm4389c1'
+  EXECUTING MAKE FOR CHIP VERSION bcm4398d0/
+make[2]: Entering directory '/home/raspberry/nexmon/firmwares/bcm4398d0'
+  EXECUTING MAKE FOR FIRMWARE VERSION 24_671_6_9_r1031525/
+make[3]: Entering directory '/home/raspberry/nexmon/firmwares/bcm4398d0/24_671_6_9_r1031525'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm4398d0/24_671_6_9_r1031525'
+make[2]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm4398d0'
+  EXECUTING MAKE FOR CHIP VERSION bcm6715b0/
+make[2]: Entering directory '/home/raspberry/nexmon/firmwares/bcm6715b0'
+  EXECUTING MAKE FOR FIRMWARE VERSION 17_10_188_6401_r808804_ax86upro/
+make[3]: Entering directory '/home/raspberry/nexmon/firmwares/bcm6715b0/17_10_188_6401_r808804_ax86upro'
+  EXTRACTING HOST FIRMWARE IMAGE
+make[3]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm6715b0/17_10_188_6401_r808804_ax86upro'
+make[2]: Leaving directory '/home/raspberry/nexmon/firmwares/bcm6715b0'
+make[1]: Leaving directory '/home/raspberry/nexmon/firmwares'
+root@raspberry:/home/raspberry/nexmon# cd patches/bcm43455c0/7_45_189/
+root@raspberry:/home/raspberry/nexmon/patches/bcm43455c0/7_45_189# git clone https://github.com/seemoo-lab/nexmon_csi.git
+Cloning into 'nexmon_csi'...
+remote: Enumerating objects: 365, done.
+remote: Counting objects: 100% (101/101), done.
+remote: Compressing objects: 100% (74/74), done.
+remote: Total 365 (delta 31), reused 93 (delta 27), pack-reused 264
+Receiving objects: 100% (365/365), 2.88 MiB | 1.56 MiB/s, done.
+Resolving deltas: 100% (160/160), done.
+root@raspberry:/home/raspberry/nexmon/patches/bcm43455c0/7_45_189# cd nexmon_csi/
+root@raspberry:/home/raspberry/nexmon/patches/bcm43455c0/7_45_189/nexmon_csi# make install-firmware
+
+
+          ###########   ###########   ##########    ##########
+         ############  ############  ############  ############
+         ##            ##            ##   ##   ##  ##        ##
+         ##            ##            ##   ##   ##  ##        ##
+         ###########   ####  ######  ##   ##   ##  ##    ######
+          ###########  ####  #       ##   ##   ##  ##    #    #
+                   ##  ##    ######  ##   ##   ##  ##    #    #
+                   ##  ##    #       ##   ##   ##  ##    #    #
+         ############  ##### ######  ##   ##   ##  ##### ######
+         ###########    ###########  ##   ##   ##   ##########
+
+            S E C U R E   M O B I L E   N E T W O R K I N G
+
+
+                               presents:
+
+              # ###   ###  #   # # ###  ###   ###  # ###
+              ##   # #   #  # #  ##   ##   # #   # ##   #
+              #    # #####   #   #    #    # #   # #    #
+              #    # #      # #  #    #    # #   # #    #
+              #    #  #### #   # #    #    #  ###  #    #
+
+                The C-based Firmware Patching Framework
+
+
+                           !!! WARNING !!!
+    Our software may damage your hardware and may void your hardware’s
+     warranty! You use our tools at your own risk and responsibility
+
+
+  COLLECTING STATISTICS read /home/raspberry/nexmon/STATISTICS.md for more information
+  COMPILING src/console.c => obj/console.o (details: log/compiler.log)
+  COMPILING src/csi_extractor.c => obj/csi_extractor.o (details: log/compiler.log)
+  COMPILING src/ioctl.c => obj/ioctl.o (details: log/compiler.log)
+  COMPILING src/patch.c => obj/patch.o (details: log/compiler.log)
+  COMPILING src/regulations.c => obj/regulations.o (details: log/compiler.log)
+  COMPILING src/version.c => obj/version.o (details: log/compiler.log)
+  DISASSEMBLING UCODE /home/raspberry/nexmon/firmwares/bcm43455c0/7_45_189/ucode.bin => gen/ucode.asm
+  File "/home/raspberry/nexmon/buildtools/b43-v3/debug/b43-beautifier", line 26
+    print "b43 firmware assembly code beautifier"
+          ^
+SyntaxError: Missing parentheses in call to 'print'. Did you mean print("b43 firmware assembly code beautifier")?
+make: *** [Makefile:213: gen/ucode.asm] Error 1
+root@raspberry:/home/raspberry/nexmon/patches/bcm43455c0/7_45_189/nexmon_csi# cd utilities/nexutil/
+bash: cd: utilities/nexutil/: No such file or directory
+root@raspberry:/home/raspberry/nexmon/patches/bcm43455c0/7_45_189/nexmon_csi# cd .
+root@raspberry:/home/raspberry/nexmon/patches/bcm43455c0/7_45_189/nexmon_csi# cd ..
+root@raspberry:/home/raspberry/nexmon/patches/bcm43455c0/7_45_189# cd ..
+root@raspberry:/home/raspberry/nexmon/patches/bcm43455c0# cd ..
+root@raspberry:/home/raspberry/nexmon/patches# cd ..
+root@raspberry:/home/raspberry/nexmon# cd utilities/nexutil/
+root@raspberry:/home/raspberry/nexmon/utilities/nexutil# make && make install
+cd ../libnexio && make
+make[1]: Entering directory '/home/raspberry/nexmon/utilities/libnexio'
+gcc -c libnexio.c -o libnexio.o -DBUILD_ON_RPI -DVERSION=\"IT_VERSION\" -I../../patches/include
+ar rcs libnexio.a libnexio.o
+make[1]: Leaving directory '/home/raspberry/nexmon/utilities/libnexio'
+gcc -static -o nexutil nexutil.c bcmwifi_channels.c b64-encode.c b64-decode.c -DBUILD_ON_RPI -DVERSION=\"IT_VERSION\" -DUSE_NETLINK -I. -I../../patches/include -I../libnexio -L../libnexio/ -lnexio -I../libargp
+cd ../libnexio && make
+make[1]: Entering directory '/home/raspberry/nexmon/utilities/libnexio'
+gcc -c libnexio.c -o libnexio.o -DBUILD_ON_RPI -DVERSION=\"IT_VERSION\" -I../../patches/include
+ar rcs libnexio.a libnexio.o
+make[1]: Leaving directory '/home/raspberry/nexmon/utilities/libnexio'
+gcc -static -o nexutil nexutil.c bcmwifi_channels.c b64-encode.c b64-decode.c -DBUILD_ON_RPI -DVERSION=\"IT_VERSION\" -DUSE_NETLINK -I. -I../../patches/include -I../libnexio -L../libnexio/ -lnexio -I../libargp
+cp nexutil /usr/bin/
+root@raspberry:/home/raspberry/nexmon/utilities/nexutil# apt-get remove wpasupplicant
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following packages were automatically installed and are no longer required:
+  dns-root-data dnsmasq-base freeglut3 iptables libbluetooth3 libboost-program-options1.74.0 libfuse2 libglu1-mesa libip6tc2 libndp0 libnetfilter-conntrack3 libnfnetlink0 libpcsclite1 libqt5designer5
+  libqt5help5 libqt5test5 libteamdctl0 libturbojpeg0 python3-kms++ python3-opengl python3-pidng python3-piexif python3-prctl python3-pyqt5 python3-pyqt5.sip python3-simplejpeg python3-v4l2
+Use 'sudo apt autoremove' to remove them.
+The following packages will be REMOVED:
+  network-manager wpasupplicant
+0 upgraded, 0 newly installed, 2 to remove and 1 not upgraded.
+After this operation, 17.1 MB disk space will be freed.
+Do you want to continue? [Y/n] y
+(Reading database ... 162560 files and directories currently installed.)
+Removing network-manager (1.30.6-1+deb11u1) ...
+Removing wpasupplicant (2:2.9.0-21) ...
+Processing triggers for dbus (1.12.28-0+deb11u1) ...
+Processing triggers for man-db (2.9.4-2) ...
+root@raspberry:/home/raspberry/nexmon/utilities/nexutil#
