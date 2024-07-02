@@ -26,7 +26,7 @@ The system can recognize the following activities:
 
 ## Dataset
 
-The dataset used in this project consists of CSI data collected for the above activities. The data is processed and converted into RGB images which serve as inputs for the CNN classifier.
+[1]S. Gupta, A. Srinivasamurthy, M. Kumar, H. A. Murthyand X. Serra, “Tabla Solo dataset”. Zenodo, Apr. 17, 2015. doi: 10.5281/zenodo.1267024.
 
 ## Installation
 
