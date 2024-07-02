@@ -26,7 +26,9 @@ The system can recognize the following activities:
 
 ## Dataset
 
-The dataset used in this project consists of CSI data collected for the above activities. The data is processed and converted into RGB images which serve as inputs for the CNN classifier.
+[Tabla Solo dataset](https://zenodo.org/records/1267024?token=eyJhbGciOiJIUzUxMiIsImlhdCI6MTcxOTgzOTcwOSwiZXhwIjoxNzIyMzgzOTk5fQ.eyJpZCI6IjQzZTU5YzUxLTU4MzUtNDY2YS05NTMwLTdiNjNjM2QwM2I4NSIsImRhdGEiOnt9LCJyYW5kb20iOiJmYTdiOWYzYjg0NzRlN2JhZmUxNzM2ZTQyNTI5OWMxNSJ9.dtneEpBKf1MPDqzDS4AFmSkLCOdhLybXuM6lKNulwqyctV1LvJCTURSMXhdxZuiMIIc7uSHD2P1ZYTAHWfkMJQ)
+
+Supporting paper : [S. Gupta, A. Srinivasamurthy, M. Kumar, H. A. Murthy, X. Serra. Discovery of Syllabic Percussion Patterns in Tabla Solo Recordings. In Proc. of the 16th International Society for Music Information Retrieval Conference (ISMIR), 2015.](http://hdl.handle.net/10230/25697)
 
 ## Installation
 
