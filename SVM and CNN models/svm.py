@@ -3,6 +3,8 @@ from sklearn.datasets import load_iris
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.svm import SVC
+import numpy as np
+import seaborn as sns
 
 # Load iris dataset
 iris = load_iris()
@@ -42,21 +44,15 @@ df1 = df[50:100]
 df2 = df[100:]
 
 # Plot Sepal Length vs Sepal Width (Setosa vs Versicolor) and Petal Length vs Petal Width (Setosa vs Versicolor)
-fig, ax = plt.subplots(1, 2, figsize=(20, 5))
+fig, ax = plt.subplots(1, 2, figsize=(20, 10))
 
-ax[0].set_xlabel('Sepal Length')
-ax[0].set_ylabel('Sepal Width')
-ax[0].scatter(df0['sepal length (cm)'], df0['sepal width (cm)'], color="green", marker='+', label='Setosa')
-ax[0].scatter(df1['sepal length (cm)'], df1['sepal width (cm)'], color="blue", marker='.', label='Versicolor')
-ax[0].set_title('Sepal Length vs Sepal Width (Setosa vs Versicolor)')
-ax[0].legend()
+sns.scatterplot(data=df, x='sepal length (cm)', y='sepal width (cm)', hue='flower_name', style='flower_name', ax=ax[0], palette='deep')
+ax[0].set_title('Sepal Length vs Sepal Width')
+ax[0].legend(loc='upper right')
 
-ax[1].set_xlabel('Petal Length')
-ax[1].set_ylabel('Petal Width')
-ax[1].scatter(df0['petal length (cm)'], df0['petal width (cm)'], color="green", marker='+', label='Setosa')
-ax[1].scatter(df1['petal length (cm)'], df1['petal width (cm)'], color="blue", marker='.', label='Versicolor')
-ax[1].set_title('Petal Length vs Petal Width (Setosa vs Versicolor)')
-ax[1].legend()
+sns.scatterplot(data=df, x='petal length (cm)', y='petal width (cm)', hue='flower_name', style='flower_name', ax=ax[1], palette='deep')
+ax[1].set_title('Petal Length vs Petal Width')
+ax[1].legend(loc='upper right')
 
 plt.show()
 
@@ -64,16 +60,52 @@ plt.show()
 X = df.drop(['target', 'flower_name'], axis='columns')
 y = df.target
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
 print(f"\nLength of X_train: {len(X_train)}")
 print(f"Length of X_test: {len(X_test)}")
 
-model = SVC()
+model = SVC(kernel='linear')
 model.fit(X_train, y_train)
 
 print(f"\nModel Score: {model.score(X_test, y_test)}")
 print(f"Prediction for [4.8, 3.0, 1.5, 0.3]: {model.predict([[4.8, 3.0, 1.5, 0.3]])}")
+
+# Plot decision boundaries
+def plot_decision_boundary(model, X, y, features, target_names, title):
+    x_min, x_max = X[features[0]].min() - 1, X[features[0]].max() + 1
+    y_min, y_max = X[features[1]].min() - 1, X[features[1]].max() + 1
+    xx, yy = np.meshgrid(np.arange(x_min, x_max, 0.01),
+                         np.arange(y_min, y_max, 0.01))
+    
+    Z = model.predict(np.c_[xx.ravel(), yy.ravel()])
+    Z = Z.reshape(xx.shape)
+    
+    plt.contourf(xx, yy, Z, alpha=0.4, cmap='viridis')
+    sns.scatterplot(x=X[features[0]], y=X[features[1]], hue=y, palette='viridis', edgecolor='k', s=100)
+    plt.xlabel(features[0])
+    plt.ylabel(features[1])
+    plt.title(title)
+    plt.legend(title='Class', labels=target_names, loc='best')
+
+# Plot decision boundaries for sepal length vs sepal width and petal length vs petal width
+fig, ax = plt.subplots(1, 2, figsize=(20, 10))
+
+# Sepal length vs Sepal width
+model_sepal = SVC(kernel='linear')
+model_sepal.fit(X_train[['sepal length (cm)', 'sepal width (cm)']], y_train)
+plt.sca(ax[0])
+plot_decision_boundary(model_sepal, X_train[['sepal length (cm)', 'sepal width (cm)']], y_train, 
+                       ['sepal length (cm)', 'sepal width (cm)'], iris.target_names, 'Sepal Length vs Sepal Width Decision Boundary')
+
+# Petal length vs Petal width
+model_petal = SVC(kernel='linear')
+model_petal.fit(X_train[['petal length (cm)', 'petal width (cm)']], y_train)
+plt.sca(ax[1])
+plot_decision_boundary(model_petal, X_train[['petal length (cm)', 'petal width (cm)']], y_train, 
+                       ['petal length (cm)', 'petal width (cm)'], iris.target_names, 'Petal Length vs Petal Width Decision Boundary')
+
+plt.show()
 
 # Tune parameters
 # 1. Regularization (C)
