@@ -26,7 +26,7 @@ The system can recognize the following activities:
 
 ## Dataset
 
-[1]S. Gupta, A. Srinivasamurthy, M. Kumar, H. A. Murthyand X. Serra, “Tabla Solo dataset”. Zenodo, Apr. 17, 2015. doi: 10.5281/zenodo.1267024.
+[S. Gupta, A. Srinivasamurthy, M. Kumar, H. A. Murthy, X. Serra. Discovery of Syllabic Percussion Patterns in Tabla Solo Recordings. In Proc. of the 16th International Society for Music Information Retrieval Conference (ISMIR), 2015.](http://hdl.handle.net/10230/25697)
 
 ## Installation
 
