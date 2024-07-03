@@ -9,20 +9,8 @@ The Internet of Things (IoT) has brought significant advancements in Human Activ
 ## Key Features
 
 - Utilizes CSI data from WiFi signals for HAR.
-- Collects data using a Raspberry Pi 4.
+- Collects data using a Raspberry Pi 4 and/or ESP32.
 - Converts CSI data to images for use with a 2D Convolutional Neural Network (CNN).
-- Achieves high accuracy (around 95%) for recognizing seven different activities.
-
-## Activities Recognized
-
-The system can recognize the following activities:
-- Sit down
-- Stand up
-- Lie down
-- Run
-- Walk
-- Fall
-- Bend
 
 ## Dataset
 
