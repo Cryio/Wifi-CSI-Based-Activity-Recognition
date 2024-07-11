@@ -1,0 +1,12 @@
+[mapping:spi_flash]
+archive: libspi_flash.a
+entries:
+    spi_flash_rom_patch (noflash)
+    spi_flash_chip_generic (noflash)
+    spi_flash_chip_issi (noflash)
+    spi_flash_chip_mxic (noflash)
+    spi_flash_chip_gd (noflash)
+    spi_flash_chip_winbond (noflash)
+    spi_flash_chip_boya (noflash)
+    spi_flash_chip_th (noflash)
+    memspi_host_driver (noflash)
