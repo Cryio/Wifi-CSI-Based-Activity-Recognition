@@ -1,0 +1,12 @@
+{
+    "idfInstalled": {
+        "sha": {
+            "targets": [
+                "esp32",
+                "esp32s2",
+                "esp32c3",
+                "esp32s3"
+            ]
+        }
+    }
+}

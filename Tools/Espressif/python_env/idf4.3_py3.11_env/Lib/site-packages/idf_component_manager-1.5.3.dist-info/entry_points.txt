@@ -1,0 +1,2 @@
+[console_scripts]
+compote = idf_component_manager.cli:safe_cli
