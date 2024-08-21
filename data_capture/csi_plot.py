@@ -1,10 +1,8 @@
 import os
 import numpy as np
 import pandas as pd
-from CSIKit.filters.passband import lowpass
-from CSIKit.filters.statistical import running_mean
-from CSIKit.util.filters import hampel
 from CSIKit.tools.batch_graph import BatchGraph
+import re
 
 # Directory containing CSI files
 csi_directory = 'data_capture/csi'
@@ -12,43 +10,60 @@ csi_directory = 'data_capture/csi'
 plot_directory = 'data_capture/csi_plot'
 os.makedirs(plot_directory, exist_ok=True)
 
-# Apply filters and plot CSI data
+# Function to parse the CSI data string
+def parse_csi_string(csi_string):
+    # Extract the values between the square brackets
+    match = re.search(r'\[(.*?)\]', csi_string)
+    if match:
+        # Split the extracted string into individual values and convert to float
+        csi_values = list(map(float, match.group(1).split()))
+        return csi_values
+    return []
+
+# Process and plot CSI data
 def process_and_plot_csi_files(csi_directory, plot_directory):
     for filename in os.listdir(csi_directory):
         if filename.endswith(".csv"):
             file_path = os.path.join(csi_directory, filename)
             print(f"Processing file: {file_path}")
 
-            # Read CSI data from CSV
-            csi_data = pd.read_csv(file_path)
+            # Read the CSV file
+            csi_data = pd.read_csv(file_path, header=None)
             
-            # Assuming that CSI data is in columns named like 'CSI_DATA_1', 'CSI_DATA_2', ...
-            csi_columns = [col for col in csi_data.columns if col.startswith('CSI_DATA')]
-            csi_matrix = csi_data[csi_columns].values
+            # Print the number of columns
+            print(f"Number of columns in {filename}: {len(csi_data.columns)}")
 
-            # Assuming there are multiple frames, each row is a frame, and columns are subcarriers
-            no_frames, no_subcarriers = csi_matrix.shape
+            # Initialize a list to hold parsed CSI matrices
+            csi_matrices = []
 
-            # Apply filters
-            for x in range(no_frames):
-                csi_matrix[x] = lowpass(csi_matrix[x], 10, 100, 5)
-                csi_matrix[x] = hampel(csi_matrix[x], 10, 3)
-                csi_matrix[x] = running_mean(csi_matrix[x], 10)
+            # Iterate over each row to extract CSI data
+            for index, row in csi_data.iterrows():
+                # Check if the column exists
+                if 25 < len(row):
+                    # The CSI data is in the 26th column (index 25)
+                    csi_values = parse_csi_string(row.iloc[25])
+                    if csi_values:
+                        csi_matrices.append(csi_values)
+                else:
+                    print(f"Column 27 does not exist in row {index} of {filename}. Skipping...")
+
+            # Convert the list of CSI matrices to a numpy array
+            csi_matrix = np.array(csi_matrices)
+
+            # Debug: Check if csi_matrix contains valid data
+            if csi_matrix.size == 0:
+                print(f"Warning: {filename} contains no valid CSI data. Skipping...")
+                continue
+            
+            print(f"csi_matrix shape: {csi_matrix.shape}")
 
             # Determine output file path
             output_file = os.path.join(plot_directory, filename.replace(".csv", "_heatmap.png"))
 
-            # Check if plot already exists
-            if not os.path.exists(output_file):
-                # Plot heatmap and save
-                BatchGraph.plot_heatmap(csi_matrix, csi_data.index, save_to_disk=True, output_file=output_file)
-                print(f"Plot saved at: {output_file}")
-            else:
-                print(f"Plot already exists: {output_file}")
+            # Plot heatmap using BatchGraph
+            BatchGraph.plot_heatmap(csi_matrix, range(len(csi_matrix)), save_path=output_file)
+            
+            print(f"Plot saved at: {output_file}")
 
 if __name__ == "__main__":
     process_and_plot_csi_files(csi_directory, plot_directory)
-
-
-# Compare 2 time series data - csi and audio signal - establish the relation between - cross-corelation matrix/function (ranges from negative to positive) - value of the cross-corelation matrix
-# Deadline by tomorrow morning
