@@ -27,7 +27,12 @@ def save_cross_corr_with_details(cross_corr_matrix, csi_file, lags):
     base_name = os.path.splitext(csi_file)[0]
     output_dir = 'data_capture/cross_correlation'
     os.makedirs(output_dir, exist_ok=True)
-    output_file = os.path.join(output_dir, f"{base_name}_cross_corr_{timestamp}.csv")
+    output_file = os.path.join(output_dir, f"{base_name}_cross_corr.csv")
+    
+    # Check if file already exists
+    if os.path.exists(output_file):
+        print(f"File {output_file} already exists. Skipping.")
+        return
     
     subcarrier_indices = np.arange(1, cross_corr_matrix.shape[0] + 1)
     
@@ -40,6 +45,14 @@ def save_cross_corr_with_details(cross_corr_matrix, csi_file, lags):
     df = pd.DataFrame(data, columns=['Subcarrier', 'Lag', 'Cross-Correlation'])
     df.to_csv(output_file, index=False)
     print(f"Saved cross-correlation details to {output_file}")
+
+def save_cross_corr_plot(fig, csi_file):
+    plot_dir = 'data_capture/cross_correlation_plot'
+    os.makedirs(plot_dir, exist_ok=True)
+    base_name = os.path.splitext(csi_file)[0]
+    plot_file = os.path.join(plot_dir, f"{base_name}_cross_corr_plot.png")
+    fig.savefig(plot_file)
+    print(f"Saved cross-correlation plot to {plot_file}")
 
 # Set directories for CSI and audio data
 csi_dir = 'data_capture/csi_matrix'
@@ -71,27 +84,13 @@ for csi_file, audio_file in zip(csi_files, audio_files):
         csi_matrix = csi_matrix[:min_samples, :]
         audio_signal = audio_signal[:min_samples]
 
-        # Check standard deviation for each subcarrier
-        std_devs = np.std(csi_matrix, axis=0)
-        print("Standard Deviations of Subcarriers:\n", std_devs)
-        varied_subcarriers = np.where(std_devs != 0)[0]
-        print("Indices of Subcarriers with Non-Zero Std Dev:", varied_subcarriers)
-
-        if len(varied_subcarriers) == 0:
-            print("No varying subcarriers found. Skipping processing for this file.")
-            continue
-
-        # Use only subcarriers with non-zero standard deviation
-        csi_matrix_varied = csi_matrix[:, varied_subcarriers]
-        print("Varied Subcarriers Matrix:\n", csi_matrix_varied)
-
-        # Create cross-correlation matrix
-        cross_corr_matrix = np.zeros((csi_matrix_varied.shape[1], 2 * len(audio_signal) - 1))
+        # Create cross-correlation matrix for all subcarriers
+        cross_corr_matrix = np.zeros((csi_matrix.shape[1], 2 * len(audio_signal) - 1))
         lags = np.arange(-len(audio_signal) + 1, len(audio_signal))
         strong_correlations = []
 
-        for i in range(csi_matrix_varied.shape[1]):
-            subcarrier_signal = csi_matrix_varied[:, i]
+        for i in range(csi_matrix.shape[1]):
+            subcarrier_signal = csi_matrix[:, i]
 
             # Ensure subcarrier_signal is the same length as audio_signal
             if len(subcarrier_signal) != len(audio_signal):
@@ -139,25 +138,27 @@ for csi_file, audio_file in zip(csi_files, audio_files):
         else:
             print(f"No strong correlations found in {csi_file}.")
 
-        # Plot each subcarrier's cross-correlation separately in an 8x8 grid
-        num_plots = len(varied_subcarriers)
+        # Plot each subcarrier's cross-correlation separately in a 10x10 grid
+        num_plots = csi_matrix.shape[1]
         grid_size = 8
         num_rows = int(np.ceil(num_plots / grid_size))
 
-        fig, axs = plt.subplots(num_rows, grid_size, figsize=(20, 2.5 * num_rows))
+        fig, axs = plt.subplots(num_rows, grid_size, figsize=(15, 2.0 * num_rows))  # Adjust figsize for smaller plots
         axs = axs.flatten()
 
-        for i, subcarrier_idx in enumerate(varied_subcarriers):
-            axs[i].plot(lags, cross_corr_matrix[i, :])
-            axs[i].set_xlabel('Lag')
-            axs[i].set_ylabel('Cross-Correlation')
-            axs[i].set_title(f'Subcarrier {subcarrier_idx + 1}')
+        for i in range(num_plots):
+            if i < 64:
+                axs[i].plot(lags, cross_corr_matrix[i, :])
+                axs[i].set_xlabel('Lag', fontsize=6)
+                axs[i].set_ylabel('Cross-Correlation', fontsize=6)
+                axs[i].set_title(f'Subcarrier {i + 1}\nCorr: {np.max(np.abs(cross_corr_matrix[i, :])):.3f}', fontsize=6)
+            else:
+                axs[i].axis('off')  # Hide empty plots
 
-        # Remove any empty subplots
-        for j in range(i + 1, len(axs)):
-            fig.delaxes(axs[j])
+            axs[i].tick_params(axis='both', which='major', labelsize=6)
 
-        plt.tight_layout()
+        plt.tight_layout(pad=3.0, h_pad=3.0, w_pad=0.0)
+        save_cross_corr_plot(fig, csi_file)  # Save the plot
         plt.show()
 
     except Exception as e:

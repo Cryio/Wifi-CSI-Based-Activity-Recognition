@@ -20,7 +20,7 @@ def process_csi_data(file_path):
                     real_part = int(csi_values[i])
                     imag_part = int(csi_values[i+1])
                     amplitude = np.sqrt(real_part**2 + imag_part**2)  # Calculate amplitude
-                    csi_data_row.append(amplitude)  # Store only amplitude
+                    csi_data_row.append(amplitude)  # Store amplitude including zeros
                 except (ValueError, IndexError) as e:
                     csi_data_row.append(np.nan)  # Handle malformed or incomplete pairs
             
