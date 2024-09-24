@@ -3,7 +3,7 @@ from pyAudioProcessing.extract_features import get_features
 
 # Spectrogram plot
 plot.spectrogram(
-    r"D:\Projects\WIFI Research\Audio_logs\2024-06-19_20-16-23-88.wav",    
+    r"D:\Projects\WIFI Research - Git\April\Audio_logs\2024-05-29_19-21-28.805.wav",    
     show=True,
     save_to_disk=True,
     output_file=r'D:\Projects\WIFI Research\April\Audio_logs\plots'
@@ -11,16 +11,16 @@ plot.spectrogram(
 
 # Time-series plot
 plot.time(
-    r"D:\Projects\WIFI Research\Audio_logs\2024-06-19_20-16-23-88.wav",
+    r"D:\Projects\WIFI Research - Git\April\Audio_logs\2024-05-29_19-21-28.805.wav",
     show=True,
     save_to_disk=True,
-    output_file=r'D:\Projects\WIFI Research\April\Audio_logs\plots'
+    output_file=r'D:\Projects\WIFI Research - Git\April\Audio_logs\plots'
 )
 
 # Feature extraction of a single file
 
 features = get_features(
-  file=r"D:\Projects\WIFI Research\Audio_logs\2024-06-19_20-16-23-88.wav",
+  file=r"D:\Projects\WIFI Research - Git\April\Audio_logs\2024-05-29_19-21-28.805.wav",
   feature_names=["gfcc", "mfcc"]
 )
 
