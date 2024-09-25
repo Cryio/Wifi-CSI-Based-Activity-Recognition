@@ -17,7 +17,7 @@ audio_duration = 10
 audio_directory = "data_capture/audio"
 
 # Total duration for both captures combined
-total_duration = 60 # in seconds
+total_duration = 10 # in seconds
 
 # Ensure directories exist
 os.makedirs(target_directory_csi, exist_ok=True)
