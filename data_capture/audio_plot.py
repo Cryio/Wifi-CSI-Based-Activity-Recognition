@@ -1,9 +1,26 @@
 import os
-from pyAudioProcessing import plot
-from pyAudioProcessing.extract_features import get_features
+import numpy as np
+import librosa
+import matplotlib.pyplot as plt
+import pandas as pd
+from scipy.interpolate import interp1d
+from scipy.ndimage import gaussian_filter1d
+
+def normalize(data):
+    """
+    Normalize data to be within the range of -1 to 1.
+    
+    Args:
+        data (np.ndarray): The data to normalize.
+
+    Returns:
+        np.ndarray: Normalized data.
+    """
+    return (data - np.min(data)) / (np.max(data) - np.min(data)) * 2 - 1
 
 # Directory paths
 audio_directory = 'data_capture/audio'
+audio_matrix_directory = 'data_capture/audio_matrix'
 plot_directory = 'data_capture/audio_plot'
 
 # Ensure the plot directory exists
@@ -11,10 +28,12 @@ os.makedirs(plot_directory, exist_ok=True)
 
 # List all .wav files in the audio directory
 audio_files = [f for f in os.listdir(audio_directory) if f.endswith('.wav')]
+audio_matrix_files = [f for f in os.listdir(audio_matrix_directory) if f.endswith('.csv')]
 
 # Generate plots for each audio file
-for audio_file in audio_files:
+for audio_file, audio_matrix_file in zip(audio_files, audio_matrix_files):
     audio_file_path = os.path.join(audio_directory, audio_file)
+    audio_matrix_file_path = os.path.join(audio_matrix_directory, audio_matrix_file)
     
     # Define output plot file paths
     spectrogram_plot_path = os.path.join(plot_directory, f"{os.path.splitext(audio_file)[0]}_spectrogram.png")
@@ -24,20 +43,66 @@ for audio_file in audio_files:
     if not (os.path.exists(spectrogram_plot_path) and os.path.exists(time_series_plot_path)):
         print(f"Generating plots for {audio_file}...")
 
-        # Spectrogram plot
-        plot.spectrogram(
-            audio_file_path,    
-            show=False,
-            save_to_disk=True,
-            output_file=spectrogram_plot_path
-        )
+        # Load audio data with librosa
+        audio_data, sr = librosa.load(audio_file_path, sr=None)  # sr=None keeps the original sample rate
+        
+        # Generate the spectrogram plot
+        print(f"Generating spectrogram for {audio_file}...")
+        plt.figure(figsize=(10, 6))
+        S = librosa.feature.melspectrogram(y=audio_data, sr=sr, n_mels=128, fmax=8000)
+        S_dB = librosa.power_to_db(S, ref=np.max)
+        librosa.display.specshow(S_dB, sr=sr, fmax=8000, x_axis='time', y_axis='mel')
+        plt.colorbar(format='%+2.0f dB')
+        plt.title(f"Mel-Spectrogram: {audio_file}")
+        plt.savefig(spectrogram_plot_path)
+        plt.show()
 
-        # Time-series plot
-        plot.time(
-            audio_file_path,
-            show=False,
-            save_to_disk=True,
-            output_file=time_series_plot_path
-        )
+        # Load the audio matrix
+        print(f"Loading audio matrix from {audio_matrix_file}...")
+        audio_matrix = pd.read_csv(audio_matrix_file_path, header=None).values.flatten()
+
+        # Normalize the audio matrix
+        audio_matrix_normalized = normalize(audio_matrix)
+
+        # Time axis for the waveform
+        time_axis_audio = np.linspace(0, len(audio_data) / sr, num=len(audio_data))
+
+        # Time axis for the audio matrix with equal intervals over the audio duration
+        matrix_time_axis = np.linspace(0, len(audio_data) / sr, num=len(audio_matrix_normalized))
+
+        # Interpolate the normalized audio matrix points for a smoother curve
+        interpolation_function = interp1d(matrix_time_axis, audio_matrix_normalized, kind='linear', fill_value="extrapolate")
+        
+        # Create a new time axis for smooth plotting
+        smooth_time_axis = np.linspace(0, len(audio_data) / sr, num=1000)  # 1000 points for smoothness
+        smooth_audio_matrix = interpolation_function(smooth_time_axis)
+
+        # Apply Gaussian smoothing to the interpolated audio matrix
+        sigma = 0.5  # Increased value for more smoothing
+        smooth_audio_matrix = gaussian_filter1d(smooth_audio_matrix, sigma=sigma)
+
+        # Generate the time-series plot
+        print(f"Generating time-series plot for {audio_file}...")
+        plt.figure(figsize=(10, 6))
+
+        # Plot audio waveform
+        plt.plot(time_axis_audio, audio_data, label="Audio Waveform", color='blue', linewidth=0.8)
+
+        # Plot the smoothed normalized audio matrix as a curve
+        plt.plot(smooth_time_axis, smooth_audio_matrix, color='green', label='Smoothed Audio Matrix Curve', linewidth=1.5)
+
+        # Plot the original normalized audio matrix as points
+        plt.scatter(matrix_time_axis, audio_matrix_normalized, color='red', s=10, label='Normalized Audio Matrix Points')
+
+        # Add labels and legend
+        plt.title(f"Time-Series Plot: {audio_file}")
+        plt.xlabel("Time (seconds)")
+        plt.ylabel("Amplitude")
+        plt.legend()
+
+        # Save the time-series plot
+        plt.savefig(time_series_plot_path)
+        plt.show()
+
     else:
         print(f"Plots for {audio_file} already exist.")
