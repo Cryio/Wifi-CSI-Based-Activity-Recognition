@@ -53,24 +53,6 @@ def save_cross_corr_plot(fig, csi_file, corr_type):
     fig.savefig(plot_file)
     print(f"Saved {corr_type} cross-correlation plot to {plot_file}")
 
-def resample_audio_to_csi(csi_matrix, audio_signal, csi_sampling_rate, audio_sampling_rate):
-    # Ensure audio sampling rate is not zero to avoid division by zero error
-    if audio_sampling_rate == 0:
-        raise ValueError("Audio sampling rate cannot be zero.")
-
-    freq_in_ms = 1000 / audio_sampling_rate
-    audio_timestamps = pd.date_range(start='2023-01-01', periods=len(audio_signal), freq=f'{int(freq_in_ms)}ms')
-
-    csi_timestamps = pd.date_range(start='2023-01-01', periods=csi_matrix.shape[0], freq=f'{int(1000 / csi_sampling_rate)}ms')
-
-    # Interpolating the audio data to match CSI timestamps
-    audio_resampled = np.interp(csi_timestamps.astype(np.int64) / 10**9, 
-                                audio_timestamps.astype(np.int64) / 10**9, 
-                                audio_signal)
-
-    return audio_resampled
-
-
 def compute_cross_correlation(csi_data, audio_signal, lags, corr_type, csi_file):
     cross_corr_matrix = np.zeros((csi_data.shape[1], 2 * len(audio_signal) - 1))
     strong_correlations = []
@@ -126,7 +108,7 @@ def compute_cross_correlation(csi_data, audio_signal, lags, corr_type, csi_file)
     else:
         print(f"No strong correlations found in {csi_file}.")
 
-    # Plot each subcarrier's cross-correlation separately in a 10x10 grid
+    # Plot each subcarrier's cross-correlation separately in a grid
     num_plots = csi_data.shape[1]
     grid_size = 8
     num_rows = int(np.ceil(num_plots / grid_size))
@@ -158,10 +140,6 @@ csi_files_amplitude = sorted([f for f in os.listdir(csi_dir_amplitude) if f.ends
 csi_files_phase = sorted([f for f in os.listdir(csi_dir_phase) if f.endswith('.csv')])
 audio_files = sorted([f for f in os.listdir(audio_dir) if f.endswith('.csv')])
 
-# Define sampling rates
-csi_sampling_rate = 100  # Example CSI sampling rate in Hz
-audio_sampling_rate = 44100  # Example audio sampling rate in Hz
-
 # Process amplitude data
 for csi_file, audio_file in zip(csi_files_amplitude, audio_files):
     try:
@@ -178,18 +156,14 @@ for csi_file, audio_file in zip(csi_files_amplitude, audio_files):
         audio_signal = pd.read_csv(audio_data_path, header=None).values.flatten()
         print(f"Loaded audio data with shape: {audio_signal.shape}")
 
-        # Resample the audio data to match the CSI data
-        audio_resampled = resample_audio_to_csi(csi_matrix, audio_signal, csi_sampling_rate, audio_sampling_rate)
-        print(f"Resampled audio data to shape: {audio_resampled.shape}")
-
-        min_samples = min(csi_matrix.shape[0], len(audio_resampled))
+        min_samples = min(csi_matrix.shape[0], len(audio_signal))
         csi_matrix = csi_matrix[:min_samples, :]
-        audio_resampled = audio_resampled[:min_samples]
+        audio_signal = audio_signal[:min_samples]
 
-        lags = np.arange(-len(audio_resampled) + 1, len(audio_resampled))
+        lags = np.arange(-len(audio_signal) + 1, len(audio_signal))
 
         # Compute cross-correlation for amplitude data
-        compute_cross_correlation(csi_matrix, audio_resampled, lags, 'amplitude', csi_file)
+        compute_cross_correlation(csi_matrix, audio_signal, lags, 'amplitude', csi_file)
 
     except Exception as e:
         print(f"Error processing amplitude {csi_file} and {audio_file}: {e}")
@@ -211,18 +185,14 @@ for csi_file, audio_file in zip(csi_files_phase, audio_files):
         audio_signal = pd.read_csv(audio_data_path, header=None).values.flatten()
         print(f"Loaded audio data with shape: {audio_signal.shape}")
 
-        # Resample the audio data to match the CSI data
-        audio_resampled = resample_audio_to_csi(csi_matrix, audio_signal, csi_sampling_rate, audio_sampling_rate)
-        print(f"Resampled audio data to shape: {audio_resampled.shape}")
-
-        min_samples = min(csi_matrix.shape[0], len(audio_resampled))
+        min_samples = min(csi_matrix.shape[0], len(audio_signal))
         csi_matrix = csi_matrix[:min_samples, :]
-        audio_resampled = audio_resampled[:min_samples]
+        audio_signal = audio_signal[:min_samples]
 
-        lags = np.arange(-len(audio_resampled) + 1, len(audio_resampled))
+        lags = np.arange(-len(audio_signal) + 1, len(audio_signal))
 
         # Compute cross-correlation for phase data
-        compute_cross_correlation(csi_matrix, audio_resampled, lags, 'phase', csi_file)
+        compute_cross_correlation(csi_matrix, audio_signal, lags, 'phase', csi_file)
 
     except Exception as e:
         print(f"Error processing phase {csi_file} and {audio_file}: {e}")

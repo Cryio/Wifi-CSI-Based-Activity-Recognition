@@ -119,7 +119,7 @@ class AudioCapture:
 
     def start(self):
         timestamp = time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime()) + f'.{int(time.time() * 1000) % 1000}'
-        timestamp = timestamp.replace(':', '-').replace('.', '-')
+        timestamp = timestamp.replace(':', '-')
         audio_filename = os.path.join(self.directory, f"{timestamp}.wav")
         self.record_audio(audio_filename)
 
