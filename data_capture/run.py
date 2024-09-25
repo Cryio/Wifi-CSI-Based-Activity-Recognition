@@ -22,17 +22,17 @@ def main():
     print(f"Running {record_both_script}...")
     run_script(record_both_script)
 
-    print(f"Running {audio_plot_script}...")
-    run_script(audio_plot_script)
-
-    print(f"Running {csi_plot_script}...")
-    run_script(csi_plot_script)
-
     print(f"Running {audio_matrix_script}...")
     run_script(audio_matrix_script)
 
     print(f"Running {csi_matrix_script}...")
     run_script(csi_matrix_script)
+
+    print(f"Running {audio_plot_script}...")
+    run_script(audio_plot_script)
+
+    print(f"Running {csi_plot_script}...")
+    run_script(csi_plot_script)
 
     print(f"Running {cross_correlation_script}...")
     run_script(cross_correlation_script)

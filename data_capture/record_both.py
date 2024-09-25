@@ -10,10 +10,10 @@ import wave
 custom_serial_port = '/dev/ttyUSB0'
 custom_baud_rate = 1000000
 target_directory_csi = "data_capture/csi"
-record_duration_csi = 60
+record_duration_csi = 10
 
 # Configuration parameters for Audio capture
-audio_duration = 60
+audio_duration = 10
 audio_directory = "data_capture/audio"
 
 # Total duration for both captures combined
