@@ -123,4 +123,6 @@ To run the project:
 
 ## References
 
-1. S. Gupta, A. Srinivasamurthy, M. Kumar, H. A. Murthy, X. Serra. *Discovery of Syllabic Percussion Patterns in Tabla Solo Recordings*. In Proceedings of the 16th International Society for Music Information Retrieval Conference (ISMIR), 2015.
+1. [S. Gupta, A. Srinivasamurthy, M. Kumar, H. A. Murthy, X. Serra. Discovery of Syllabic Percussion Patterns in Tabla Solo Recordings. In Proc. of the 16th International Society for Music Information Retrieval Conference (ISMIR), 2015.](http://hdl.handle.net/10230/25697)
+
+---

@@ -21,6 +21,7 @@ def normalize(data):
 # Directory paths
 audio_directory = 'data_capture/audio'
 audio_matrix_directory = 'data_capture/audio_matrix'
+
 plot_directory = 'data_capture/audio_plot'
 
 # Ensure the plot directory exists
