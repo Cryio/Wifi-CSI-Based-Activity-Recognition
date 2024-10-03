@@ -4,10 +4,14 @@
 
 This project focuses on using WiFi Channel State Information (CSI) to recognize human activities without the privacy concerns associated with camera-based methods. Using the ubiquity of WiFi devices, we aim to develop a non-intrusive monitoring system that collects CSI data for various human activities, processes it, and uses these inputs in a 2D Convolutional Neural Network (CNN) for activity recognition.
 
-![Sample Spectrogram](2024-09-25_15-55-29.664_spectrogram.png)
-*Figure 1: Mel-Spectrogram of captured audio for activity recognition.*
-
----
+<div align="center">
+  <img src="https://github.com/Cryio/Wifi-CSI-Based-Activity-Recognition/blob/v1.0/data_capture/csi_plot/csi_data_2024-09-25_22-01-04.590_amp_all_subcarriers.png?raw=true" width="45%" alt="Time-series plot of captured CSI for activity recognition">
+  <img src="https://github.com/Cryio/Wifi-CSI-Based-Activity-Recognition/blob/v1.0/data_capture/csi_plot/csi_data_2024-09-25_16-27-42.805_heatmap.png?raw=true" width="45%" alt="Heatmap of captured CSI for activity recognition">
+</div>
+<div align="center">
+  <img src="https://github.com/Cryio/Wifi-CSI-Based-Activity-Recognition/blob/v1.0/data_capture/audio_plot/2024-09-25_22-01-04.590_spectrogram.png?raw=true" width="45%" alt="Mel-Spectrogram of captured audio for activity recognition">
+  <img src="https://github.com/Cryio/Wifi-CSI-Based-Activity-Recognition/blob/v1.0/data_capture/audio_plot/2024-09-25_22-01-04.590_time_series.png?raw=true" width="45%" alt="Time-series of resampled and captured audio for activity recognition">
+</div>
 
 ## Overview
 
@@ -30,7 +34,7 @@ The system works by capturing and processing CSI and audio data from WiFi device
 
 ### 1. **CSI Data Collection**
 
-We use a Raspberry Pi or ESP32 device to capture CSI data over a WiFi network. The collected data includes amplitude and phase information from the WiFi signals, which is processed and transformed into time-series representations.
+We use a ESP32 device to capture CSI data over a WiFi network. The collected data includes amplitude and phase information from the WiFi signals, which is processed and transformed into time-series representations.
 
 The `CSICapture` class handles real-time data collection from the ESP32 or other devices, saving this data to CSV files. For example, a typical capture session saves the CSI data like:
 
@@ -40,13 +44,36 @@ CSI_DATA, PA, MAC, RSSI, Rate, Sig_Mode, MCS, Bandwidth, Smoothing, ..., Timesta
 
 This information is then parsed and used for feature extraction.
 
+<div align="center">
+  <img src="https://github.com/Cryio/Wifi-CSI-Based-Activity-Recognition/blob/v1.0/data_capture/csi_plot/csi_data_2024-09-25_22-01-04.590_amp_all_subcarriers.png?raw=true" width="45%" alt="Time-series plot of captured CSI for activity recognition">
+  <img src="https://github.com/Cryio/Wifi-CSI-Based-Activity-Recognition/blob/v1.0/data_capture/csi_plot/csi_data_2024-09-25_16-27-42.805_heatmap.png?raw=true" width="45%" alt="Heatmap of captured CSI for activity recognition">
+</div>
+
+<div align="center">
+  <p>
+    <em>Figure 1a: Time-series plot of captured CSI for activity recognition. (left) | Figure 2a: Heatmap of captured CSI for activity recognition. (right).</em>
+  </p>
+</div>
+
 ### 2. **Audio Data Collection**
 
 Alongside CSI data, we capture audio recordings corresponding to human activities. The `AudioCapture` class ensures synchronized collection with the CSI data, as shown below:
 
-![Spectrogram](2024-09-25_15-55-29.664_spectrogram.png)
+<div align="center">
+  <img src="https://github.com/Cryio/Wifi-CSI-Based-Activity-Recognition/blob/v1.0/data_capture/audio_plot/2024-09-25_22-01-04.590_spectrogram.png?raw=true" width="45%" alt="Mel-Spectrogram of captured audio for activity recognition">
+  <img src="https://github.com/Cryio/Wifi-CSI-Based-Activity-Recognition/blob/v1.0/data_capture/audio_plot/2024-09-25_22-01-04.590_time_series.png?raw=true" width="45%" alt="Time-series of resampled and captured audio for activity recognition">
+</div>
 
-*Figure 2: Audio Mel-Spectrogram, used as part of the multi-modal HAR pipeline.*
+<div align="center">
+  <img src="https://github.com/Cryio/Wifi-CSI-Based-Activity-Recognition/blob/v1.0/data_capture/audio_plot/2024-09-25_16-27-42.805_spectrogram.png" width="45%" alt="Mel-Spectrogram of captured audio for activity recognition">
+  <img src="https://github.com/Cryio/Wifi-CSI-Based-Activity-Recognition/blob/v1.0/data_capture/audio_plot/2024-09-25_16-27-42.805_time_series.png?raw=true" width="45%" alt="Time-series of resampled and captured audio for activity recognition">
+</div>
+
+<div align="center">
+  <p>
+    <em>Figure 1a & 1b: Mel-Spectrogram of captured audio for activity recognition (left) | Figure 2a & 2b: Time-series of resampled and captured audio for activity recognition (right).</em>
+  </p>
+</div>
 
 Audio data is processed to extract features like **Mel-Spectrograms** for input into the 2D CNN, providing complementary information to the CSI data.
 
@@ -74,10 +101,6 @@ The synchronized collection of CSI and audio data ensures that both types of inf
 
 The dataset comprises synchronized **CSI** and **audio** captures for various human activities. Each activity is recorded with corresponding CSI and audio data, and the data is transformed into images used as inputs to the CNN.
 
-For example, the **Tabla Solo dataset** provides audio information which can be utilized for activity recognition alongside the CSI data. Supporting data:
-
-- [Tabla Solo dataset - ISMIR 2015](https://www.upf.edu/web/mtg/tabla-solo)
-
 ---
 
 ## Usage
@@ -95,14 +118,7 @@ To run the project:
 
 - The project is currently in progress, and the initial results show promising recognition of activities such as **walking**, **sitting**, and **standing** using a combination of CSI and audio data.
 - **Accuracy and F1 Score** metrics will be updated as the training progresses on the full dataset.
-
----
-
-## Future Work
-
-- **Real-Time Recognition**: Implementing real-time CSI and audio processing for activity detection on edge devices like the Raspberry Pi.
-- **Multimodal Data Fusion**: Further experiments to fuse CSI data with additional environmental sensors, such as motion or light sensors, for more accurate activity detection.
-
+  
 ---
 
 ## References
