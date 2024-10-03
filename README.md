@@ -5,12 +5,12 @@
 This project focuses on using WiFi Channel State Information (CSI) to recognize human activities without the privacy concerns associated with camera-based methods. Using the ubiquity of WiFi devices, we aim to develop a non-intrusive monitoring system that collects CSI data for various human activities, processes it, and uses these inputs in a 2D Convolutional Neural Network (CNN) for activity recognition.
 
 <div align="center">
-  <img src="https://github.com/Cryio/Wifi-CSI-Based-Activity-Recognition/blob/v1.0/data_capture/csi_plot/csi_data_2024-09-25_22-01-04.590_amp_all_subcarriers.png?raw=true" width="45%" alt="Time-series plot of captured CSI for activity recognition">
-  <img src="https://github.com/Cryio/Wifi-CSI-Based-Activity-Recognition/blob/v1.0/data_capture/csi_plot/csi_data_2024-09-25_16-27-42.805_heatmap.png?raw=true" width="45%" alt="Heatmap of captured CSI for activity recognition">
+  <img src="https://github.com/Cryio/Wifi-CSI-Based-Activity-Recognition/blob/main/data_capture/csi_plot/csi_data_2024-09-25_22-01-04.590_amp_all_subcarriers.png?raw=true" width="45%" alt="Time-series plot of captured CSI for activity recognition">
+  <img src="https://github.com/Cryio/Wifi-CSI-Based-Activity-Recognition/blob/main/data_capture/csi_plot/csi_data_2024-09-25_16-27-42.805_heatmap.png?raw=true" width="45%" alt="Heatmap of captured CSI for activity recognition">
 </div>
 <div align="center">
-  <img src="https://github.com/Cryio/Wifi-CSI-Based-Activity-Recognition/blob/v1.0/data_capture/audio_plot/2024-09-25_22-01-04.590_spectrogram.png?raw=true" width="45%" alt="Mel-Spectrogram of captured audio for activity recognition">
-  <img src="https://github.com/Cryio/Wifi-CSI-Based-Activity-Recognition/blob/v1.0/data_capture/audio_plot/2024-09-25_22-01-04.590_time_series.png?raw=true" width="45%" alt="Time-series of resampled and captured audio for activity recognition">
+  <img src="https://github.com/Cryio/Wifi-CSI-Based-Activity-Recognition/blob/main/data_capture/audio_plot/2024-09-25_22-01-04.590_spectrogram.png?raw=true" width="45%" alt="Mel-Spectrogram of captured audio for activity recognition">
+  <img src="https://github.com/Cryio/Wifi-CSI-Based-Activity-Recognition/blob/main/data_capture/audio_plot/2024-09-25_22-01-04.590_time_series.png?raw=true" width="45%" alt="Time-series of resampled and captured audio for activity recognition">
 </div>
 
 ## Overview
@@ -45,8 +45,8 @@ CSI_DATA, PA, MAC, RSSI, Rate, Sig_Mode, MCS, Bandwidth, Smoothing, ..., Timesta
 This information is then parsed and used for feature extraction.
 
 <div align="center">
-  <img src="https://github.com/Cryio/Wifi-CSI-Based-Activity-Recognition/blob/v1.0/data_capture/csi_plot/csi_data_2024-09-25_22-01-04.590_amp_all_subcarriers.png?raw=true" width="45%" alt="Time-series plot of captured CSI for activity recognition">
-  <img src="https://github.com/Cryio/Wifi-CSI-Based-Activity-Recognition/blob/v1.0/data_capture/csi_plot/csi_data_2024-09-25_16-27-42.805_heatmap.png?raw=true" width="45%" alt="Heatmap of captured CSI for activity recognition">
+  <img src="https://github.com/Cryio/Wifi-CSI-Based-Activity-Recognition/blob/main/data_capture/csi_plot/csi_data_2024-09-25_22-01-04.590_amp_all_subcarriers.png?raw=true" width="45%" alt="Time-series plot of captured CSI for activity recognition">
+  <img src="https://github.com/Cryio/Wifi-CSI-Based-Activity-Recognition/blob/main/data_capture/csi_plot/csi_data_2024-09-25_16-27-42.805_heatmap.png?raw=true" width="45%" alt="Heatmap of captured CSI for activity recognition">
 </div>
 
 <div align="center">
@@ -60,13 +60,13 @@ This information is then parsed and used for feature extraction.
 Alongside CSI data, we capture audio recordings corresponding to human activities. The `AudioCapture` class ensures synchronized collection with the CSI data, as shown below:
 
 <div align="center">
-  <img src="https://github.com/Cryio/Wifi-CSI-Based-Activity-Recognition/blob/v1.0/data_capture/audio_plot/2024-09-25_22-01-04.590_spectrogram.png?raw=true" width="45%" alt="Mel-Spectrogram of captured audio for activity recognition">
-  <img src="https://github.com/Cryio/Wifi-CSI-Based-Activity-Recognition/blob/v1.0/data_capture/audio_plot/2024-09-25_22-01-04.590_time_series.png?raw=true" width="45%" alt="Time-series of resampled and captured audio for activity recognition">
+  <img src="https://github.com/Cryio/Wifi-CSI-Based-Activity-Recognition/blob/main/data_capture/audio_plot/2024-09-25_22-01-04.590_spectrogram.png?raw=true" width="45%" alt="Mel-Spectrogram of captured audio for activity recognition">
+  <img src="https://github.com/Cryio/Wifi-CSI-Based-Activity-Recognition/blob/main/data_capture/audio_plot/2024-09-25_22-01-04.590_time_series.png?raw=true" width="45%" alt="Time-series of resampled and captured audio for activity recognition">
 </div>
 
 <div align="center">
-  <img src="https://github.com/Cryio/Wifi-CSI-Based-Activity-Recognition/blob/v1.0/data_capture/audio_plot/2024-09-25_16-27-42.805_spectrogram.png" width="45%" alt="Mel-Spectrogram of captured audio for activity recognition">
-  <img src="https://github.com/Cryio/Wifi-CSI-Based-Activity-Recognition/blob/v1.0/data_capture/audio_plot/2024-09-25_16-27-42.805_time_series.png?raw=true" width="45%" alt="Time-series of resampled and captured audio for activity recognition">
+  <img src="https://github.com/Cryio/Wifi-CSI-Based-Activity-Recognition/blob/main/data_capture/audio_plot/2024-09-25_16-27-42.805_spectrogram.png" width="45%" alt="Mel-Spectrogram of captured audio for activity recognition">
+  <img src="https://github.com/Cryio/Wifi-CSI-Based-Activity-Recognition/blob/main/data_capture/audio_plot/2024-09-25_16-27-42.805_time_series.png?raw=true" width="45%" alt="Time-series of resampled and captured audio for activity recognition">
 </div>
 
 <div align="center">
