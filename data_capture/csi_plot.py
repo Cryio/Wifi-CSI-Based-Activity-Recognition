@@ -89,7 +89,8 @@ def plot_heatmap(amplitude_data, phase_data, time_steps, output_file):
 
     # Amplitude heatmap
     plt.subplot(2, 1, 1)
-    plt.imshow(amplitude_data.T, aspect='auto', cmap='inferno', extent=[time_steps[0], time_steps[-1], 0, amplitude_data.shape[0]])
+    plt.imshow(amplitude_data.T, aspect='auto', cmap='inferno', 
+               extent=[time_steps[0], time_steps[-1], 0, amplitude_data.shape[0]])
     plt.colorbar(label='Amplitude')
     plt.title('Amplitude Heatmap of Subcarriers')
     plt.xlabel('Time (seconds)')
@@ -97,7 +98,8 @@ def plot_heatmap(amplitude_data, phase_data, time_steps, output_file):
 
     # Phase heatmap
     plt.subplot(2, 1, 2)
-    plt.imshow(phase_data.T, aspect='auto', cmap='Reds', vmin=-np.pi, vmax=np.pi, extent=[time_steps[0], time_steps[-1], 0, phase_data.shape[0]])
+    plt.imshow(phase_data.T, aspect='auto', cmap='Reds', vmin=-np.pi, vmax=np.pi, 
+               extent=[time_steps[0], time_steps[-1], 0, phase_data.shape[0]])
     plt.colorbar(label='Phase (radians)')
     plt.title('Phase Heatmap of Subcarriers')
     plt.xlabel('Time (seconds)')
@@ -109,32 +111,36 @@ def plot_heatmap(amplitude_data, phase_data, time_steps, output_file):
     print(f"Combined heatmap saved at: {output_file}")
 
 # Function to process and plot graphs for amplitude and phase data
-def process_and_plot_graphs(amplitude_directory, phase_directory, plot_directory, time_steps):
-    for filename in os.listdir(amplitude_directory):
-        if filename.endswith(".csv"):
-            amplitude_file_path = os.path.join(amplitude_directory, filename)
-            phase_file_path = os.path.join(phase_directory, filename)
+def process_and_plot_graphs(amplitude_directory, phase_directory, plot_directory, time_steps, filename):
+    # Check if output files already exist
+    output_file_heatmap = os.path.join(plot_directory, f"{filename.replace('.csv', '')}_heatmap.png")
+    output_file_amp = os.path.join(plot_directory, f"{filename.replace('.csv', '')}_amp_all_subcarriers.png")
+    output_file_phase = os.path.join(plot_directory, f"{filename.replace('.csv', '')}_phase_all_subcarriers.png")
 
-            amplitude_data = load_phase_amp_data_from_csv(amplitude_file_path)
-            phase_data = load_phase_amp_data_from_csv(phase_file_path)
+    if (os.path.exists(output_file_heatmap) and 
+        os.path.exists(output_file_amp) and 
+        os.path.exists(output_file_phase)):
+        print(f"Files for {filename} already processed. Skipping...")
+        return
 
-            # Ensure amplitude and phase data have the same shape
-            if amplitude_data.shape != phase_data.shape or amplitude_data.size == 0 or phase_data.size == 0:
-                print(f"Warning: Shape mismatch or empty data for {filename}. Skipping...")
-                continue
+    amplitude_file_path = os.path.join(amplitude_directory, filename)
+    phase_file_path = os.path.join(phase_directory, filename)
 
-            # Calculate time steps for heatmap based on amplitude data
-            time_steps_for_heatmap = np.arange(amplitude_data.shape[0]) * (1 / np.mean(np.diff(time_steps)))
+    amplitude_data = load_phase_amp_data_from_csv(amplitude_file_path)
+    phase_data = load_phase_amp_data_from_csv(phase_file_path)
 
-            # Save plots
-            output_file_heatmap = os.path.join(plot_directory, f"{filename.replace('.csv', '')}_heatmap.png")
-            plot_heatmap(amplitude_data, phase_data, time_steps_for_heatmap, output_file_heatmap)
+    # Ensure amplitude and phase data have the same shape
+    if amplitude_data.shape != phase_data.shape or amplitude_data.size == 0 or phase_data.size == 0:
+        print(f"Warning: Shape mismatch or empty data for {filename}. Skipping...")
+        return
 
-            output_file_amp = os.path.join(plot_directory, f"{filename.replace('.csv', '')}_amp_all_subcarriers.png")
-            plot_amplitude_for_all_subcarriers(amplitude_data, time_steps_for_heatmap, output_file_amp)
+    # Calculate time steps for heatmap based on amplitude data
+    time_steps_for_heatmap = np.linspace(time_steps[0], time_steps[-1], amplitude_data.shape[0])
 
-            output_file_phase = os.path.join(plot_directory, f"{filename.replace('.csv', '')}_phase_all_subcarriers.png")
-            plot_phase_for_all_subcarriers(phase_data, time_steps_for_heatmap, output_file_phase)
+    # Save plots
+    plot_heatmap(amplitude_data, phase_data, time_steps_for_heatmap, output_file_heatmap)
+    plot_amplitude_for_all_subcarriers(amplitude_data, time_steps_for_heatmap, output_file_amp)
+    plot_phase_for_all_subcarriers(phase_data, time_steps_for_heatmap, output_file_phase)
 
 # Main function to process CSI files
 def process_and_plot_csi_files(csi_directory, plot_directory):
@@ -142,6 +148,17 @@ def process_and_plot_csi_files(csi_directory, plot_directory):
         if filename.endswith(".csv"):
             file_path = os.path.join(csi_directory, filename)
             print(f"Processing file: {file_path}")
+
+            # Check if output files already exist
+            output_file_heatmap = os.path.join(plot_directory, f"{filename.replace('.csv', '')}_heatmap.png")
+            output_file_amp = os.path.join(plot_directory, f"{filename.replace('.csv', '')}_amp_all_subcarriers.png")
+            output_file_phase = os.path.join(plot_directory, f"{filename.replace('.csv', '')}_phase_all_subcarriers.png")
+
+            if (os.path.exists(output_file_heatmap) and 
+                os.path.exists(output_file_amp) and 
+                os.path.exists(output_file_phase)):
+                print(f"Files for {filename} already processed. Skipping...")
+                continue
 
             csi_data, timestamps = load_csi_data(file_path)
 
@@ -158,7 +175,7 @@ def process_and_plot_csi_files(csi_directory, plot_directory):
                 continue
 
             time_steps = np.arange(csi_matrix.shape[0]) / sampling_rate_csi
-            process_and_plot_graphs(amplitude_directory, phase_directory, plot_directory, time_steps)
+            process_and_plot_graphs(amplitude_directory, phase_directory, plot_directory, time_steps, filename)
 
 if __name__ == "__main__":
     process_and_plot_csi_files(csi_directory, plot_directory)
