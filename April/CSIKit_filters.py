@@ -28,5 +28,5 @@ for x in range(no_frames):
   csi_matrix_squeezed[x] = lowpass(csi_matrix_squeezed[x], 10, 100, 5)
   csi_matrix_squeezed[x] = hampel(csi_matrix_squeezed[x], 10, 3)
   csi_matrix_squeezed[x] = running_mean(csi_matrix_squeezed[x], 10)
-
+  
 BatchGraph.plot_heatmap(csi_matrix_squeezed, csi_data.timestamps)
