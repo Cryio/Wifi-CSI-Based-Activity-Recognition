@@ -1,0 +1,7 @@
+numpy
+matplotlib
+scipy
+scikit-learn
+pydub
+ffmpeg
+pytest

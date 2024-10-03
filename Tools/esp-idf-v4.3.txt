@@ -1,0 +1,8 @@
+https://docs.espressif.com/projects/esp-idf/en/release-v4.3/esp32/get-started/linux-setup.html
+
+sudo pacman -S --needed gcc git make flex bison gperf python-pip cmake ninja ccache dfu-util libusb
+
+https://github.com/espressif/esp-idf/tree/release/v4.3
+
+git clone -b v4.3 --recursive https://github.com/espressif/esp-idf.git
+
