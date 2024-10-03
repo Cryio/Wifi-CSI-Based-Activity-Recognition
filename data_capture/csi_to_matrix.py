@@ -76,3 +76,4 @@ if __name__ == "__main__":
     output_dir_phase = 'data_capture/csi_phase'
     output_dir_combined = 'data_capture/csi_combined'
     convert_csi_files(csi_dir, output_dir_amplitude, output_dir_phase, output_dir_combined)
+
