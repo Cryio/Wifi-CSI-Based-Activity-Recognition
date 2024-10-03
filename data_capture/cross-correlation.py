@@ -14,11 +14,9 @@ def clean_complex_string(s):
                 s += 'j0'
             elif s.endswith('j'):
                 s += '0'
-
             return complex(s)
         elif isinstance(s, (int, float)):
             return complex(float(s), 0)
-    
         else:
             return np.nan
     except (ValueError, TypeError):
@@ -45,7 +43,6 @@ def save_cross_corr_with_details(cross_corr_matrix, csi_file, lags, corr_type):
     
     df = pd.DataFrame(data, columns=['Subcarrier', 'Lag', 'Cross-Correlation'])
     df.to_csv(output_file, index=False)
-
     print(f"Saved {corr_type} cross-correlation details to {output_file}")
 
 def save_cross_corr_plot(fig, csi_file, corr_type):
@@ -199,5 +196,4 @@ for csi_file, audio_file in zip(csi_files_phase, audio_files):
 
     except Exception as e:
         print(f"Error processing phase {csi_file} and {audio_file}: {e}")
-
         traceback.print_exc()
