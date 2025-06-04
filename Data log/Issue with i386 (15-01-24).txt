@@ -1,0 +1,12 @@
+Perceived issue - When trying to change the kernel version and building it, the repository throws out an error saying there is no kernel-header. 
+
+Actual Issue - The os image provided by the official website for vm is build on i386 architecture whereas the kernel we want to switch back to (i.e. 5.4 or 4.19) is built on armhf architecture, so there is an architectural difference between the two kernels and thus not able to downgrade (IN A VM).
+
+Solution - as of now it seems that installing an arm emulator is the way to go. The link mentioned above discusses the same in detail with additional resources.
+
+
+
+References :-
+
+- https://forums.unraid.net/topic/115694-arm-vms-raspberry-pi-emulation/
+- https://raspberrypi.stackexchange.com/questions/120270/unable-to-find-raspberrypi-kernel-headers-package

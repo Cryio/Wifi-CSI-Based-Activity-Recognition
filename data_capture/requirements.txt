@@ -1,0 +1,9 @@
+numpy
+pandas
+matplotlib
+librosa
+scipy
+tensorflow
+pyaudio
+Pillow
+scikit-learn

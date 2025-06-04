@@ -1,0 +1,20 @@
+2024-12-04 22:01:21,500 - INFO - Starting main process
+2024-12-04 22:01:21,501 - INFO - Loading paths from SVM and CNN models/data_paths.csv
+2024-12-04 22:01:21,501 - WARNING - Invalid line in paths file: csi_path,audio_path
+2024-12-04 22:01:21,501 - WARNING - Invalid line in paths file: data_capture/csi_amplitude_44th\csi_data_2024-08-17_23-16-37.224.csv,data_capture/audio_matrix\2024-08-17_23-16-37-224.csv
+2024-12-04 22:01:21,501 - WARNING - Invalid line in paths file: data_capture/csi_amplitude_44th\csi_data_2024-09-25_15-55-29.664.csv,data_capture/audio_matrix\2024-09-25_15-55-29.664.csv
+2024-12-04 22:01:21,501 - WARNING - Invalid line in paths file: data_capture/csi_amplitude_44th\csi_data_2024-09-25_16-27-42.805.csv,data_capture/audio_matrix\2024-09-25_16-27-42.805.csv
+2024-12-04 22:01:21,501 - WARNING - Invalid line in paths file: data_capture/csi_amplitude_44th\csi_data_2024-09-25_22-01-04.590.csv,data_capture/audio_matrix\2024-09-25_22-01-04.590.csv
+2024-12-04 22:01:21,501 - WARNING - Invalid line in paths file: data_capture/csi_amplitude_44th\csi_data_2024-10-27_20-21-47.356.csv,data_capture/audio_matrix\2024-10-27_20-21-47.356.csv
+2024-12-04 22:01:21,502 - WARNING - Invalid line in paths file: data_capture/csi_amplitude_44th\csi_data_2024-10-27_20-27-39.60.csv,data_capture/audio_matrix\2024-10-27_20-27-39.60.csv
+2024-12-04 22:01:21,502 - WARNING - Invalid line in paths file: data_capture/csi_amplitude_44th\csi_data_2024-10-27_20-28-20.897.csv,data_capture/audio_matrix\2024-10-27_20-28-20.897.csv
+2024-12-04 22:01:21,502 - INFO - Processing CSI and audio data from data_capture/csi_amplitude_44th and data_capture/audio_matrix
+2024-12-04 22:01:21,503 - WARNING - Audio CSV csi_data_2024-08-17_23-16-37.224.csv not found. Skipping.
+2024-12-04 22:01:21,504 - WARNING - Audio CSV csi_data_2024-09-25_15-55-29.664.csv not found. Skipping.
+2024-12-04 22:01:21,505 - WARNING - Audio CSV csi_data_2024-09-25_16-27-42.805.csv not found. Skipping.
+2024-12-04 22:01:21,506 - WARNING - Audio CSV csi_data_2024-09-25_22-01-04.590.csv not found. Skipping.
+2024-12-04 22:01:21,506 - WARNING - Audio CSV csi_data_2024-10-27_20-21-47.356.csv not found. Skipping.
+2024-12-04 22:01:21,507 - WARNING - Audio CSV csi_data_2024-10-27_20-27-39.60.csv not found. Skipping.
+2024-12-04 22:01:21,507 - WARNING - Audio CSV csi_data_2024-10-27_20-28-20.897.csv not found. Skipping.
+2024-12-04 22:01:21,508 - INFO - Loading image data
+2024-12-04 22:01:21,590 - INFO - Loading image data
