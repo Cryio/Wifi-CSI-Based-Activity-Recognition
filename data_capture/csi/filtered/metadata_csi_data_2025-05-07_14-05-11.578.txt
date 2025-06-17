@@ -1,0 +1,3 @@
+Original File: csi_data_2025-05-07_14-05-11.578.csv
+Number of samples: 25
+Number of subcarriers: 65

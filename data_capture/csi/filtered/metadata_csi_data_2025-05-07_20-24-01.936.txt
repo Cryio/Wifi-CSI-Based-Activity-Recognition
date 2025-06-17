@@ -1,0 +1,5 @@
+Original File: csi_data_2025-05-07_20-24-01.936.csv
+Sampling Rate: 1000.0 Hz
+Active Subcarriers: 0
+High-pass cutoff: 0.1 Hz
+Low-pass cutoff: 50.0 Hz
