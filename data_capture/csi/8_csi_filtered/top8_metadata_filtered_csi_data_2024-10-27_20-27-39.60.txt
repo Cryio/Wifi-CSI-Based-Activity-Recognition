@@ -1,4 +1,0 @@
-Original_File: filtered_csi_data_2024-10-27_20-27-39.60.csv
-Selected_Subcarriers: 8
-Total_Samples: 23
-Subcarrier_Indices: [4, 6, 7, 10, 11, 13, 14, 16]

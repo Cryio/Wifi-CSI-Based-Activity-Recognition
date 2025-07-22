@@ -79,28 +79,28 @@ class Generator(nn.Module):
     def __init__(self, latent_dim, csi_channels, audio_channels=1, csi_length=400):
         super(Generator, self).__init__()
         input_dim = latent_dim + csi_channels * csi_length  # Total input dimension after concatenation
-        self.fc = nn.Linear(input_dim, 256 * 100)  # Flatten input to match ConvTranspose1D input size
+        self.fc = nn.Linear(input_dim, 256 * 100)  # Project to 256 channels with 100 time steps
 
         self.conv1 = nn.ConvTranspose1d(256, 128, kernel_size=4, stride=2, padding=1)
         self.conv2 = nn.ConvTranspose1d(128, 64, kernel_size=4, stride=2, padding=1)
-        self.conv3 = nn.ConvTranspose1d(64, audio_channels, kernel_size=4, stride=2, padding=1)
+        self.conv3 = nn.Conv1d(64, audio_channels, kernel_size=1)  # Final projection to audio
 
     def forward(self, z, csi_data):
         # Flatten CSI data
-        csi_data_flattened = csi_data.view(csi_data.size(0), -1)
-
+        csi_flat = csi_data.view(csi_data.size(0), -1)
+        
         # Concatenate latent vector and flattened CSI data
-        x = torch.cat([z, csi_data_flattened], dim=1)
-
-        # Fully connected layer to project to the correct shape
-        x = self.fc(x)
-        x = x.view(x.size(0), 256, 100)  # Reshape for ConvTranspose1D
-
+        x = torch.cat([z, csi_flat], dim=1)
+        
+        # Project to the correct shape for transposed convolutions
+        x = self.fc(x).view(-1, 256, 100)  # Reshape to (batch_size, channels, time_steps)
+        
         # Apply transposed convolutions
-        x = F.relu(self.conv1(x))
-        x = F.relu(self.conv2(x))
-        x = self.conv3(x).view(x.size(0), -1)  # Final output
-        return torch.sigmoid(x)
+        x = F.relu(self.conv1(x))  # Output: (batch_size, 128, 200)
+        x = F.relu(self.conv2(x))  # Output: (batch_size, 64, 400)
+        x = self.conv3(x)          # Output: (batch_size, 1, 400)
+        
+        return torch.sigmoid(x.view(-1, 400))  # Reshape to (batch_size, 400)
 
 # Discriminator Model
 class Discriminator(nn.Module):
