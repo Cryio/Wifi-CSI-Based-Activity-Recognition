@@ -14,7 +14,7 @@ Non-intrusive human activity recognition using WiFi Channel State Information (C
 
 ## Publication
 
-> **Rai, M. et al.** — *BeatWave: WiFi CSI-Based Human Activity Recognition with Multi-Modal Audio Correlation* (COMSNETS 2024, Submission M-2633)
+> **Rai, M. et al.** — *BeatWave: WiFi CSI-Based Human Activity Recognition with Multi-Modal Audio Correlation* (COMSNETS 2026)
 > [Download PDF](https://github.com/Cryio/Wifi-CSI-Based-Activity-Recognition/raw/main/m2633-rai%20final.pdf)
 
 ## Overview
