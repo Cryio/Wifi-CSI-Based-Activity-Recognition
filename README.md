@@ -84,34 +84,11 @@ python high_filter.py             # Bandpass filter CSI amplitude
 python select_top_subcarriers.py  # Keep top-8 subcarriers by variance
 ```
 
-### 4. Train a Model
-
-```bash
-# Transformer (CSI → Audio)
-python model.py
-
-# WGAN-GP
-python train_gan.py
-
-# 2D CNN (activity classification)
-python CNN_model.py
-```
-
-### 5. Run Inference
-
-```bash
-python inference.py
-```
-
-## Activities
-
-Walking, running, sitting, standing, falling — recorded in a consistent indoor environment with a fixed ESP32 position. CSI is captured at 100 Hz; audio at 44,100 Hz. Each session is ~5 minutes per activity, segmented into 500-sample windows with 90% overlap.
-
 ## Hardware
 
 | Component | Details |
 |-----------|---------|
-| ESP32 DevKit | CSI capture via `active_sta` mode, USB serial at 1 Mbaud |
+| ESP32 DevKit | CSI capture via USB serial at 1 Mbaud |
 | Router | Standard 2.4 GHz WiFi AP |
 | Microphone | Any USB or 3.5 mm mic supported by PyAudio |
 | Host PC / Raspberry Pi | Runs `record_both.py` |
