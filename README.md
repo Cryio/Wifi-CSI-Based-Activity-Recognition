@@ -10,7 +10,7 @@ Non-intrusive human activity recognition using WiFi Channel State Information (C
   <img src="data_capture/audio_plot/2024-09-25_22-01-04.590_spectrogram.png?raw=true" width="45%" alt="Mel-spectrogram of synchronized audio">
   <img src="data_capture/audio_plot/2024-09-25_22-01-04.590_time_series.png?raw=true" width="45%" alt="Audio time-series">
 </div>
-<div align="center"><em>Left: CSI amplitude heatmap. Right: Synchronized audio mel-spectrogram.</em></div>
+<div align="center"><em>Top row: CSI amplitude time-series (left) and amplitude/phase heatmap (right). Bottom row: Synchronized audio mel-spectrogram (left) and audio time-series (right).</em></div>
 
 ## Publication
 
